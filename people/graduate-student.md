@@ -3,7 +3,7 @@ layout: page
 title: "Graduate Student"
 ---
 
-Researcher - Physics & Astronomy
+researcher - Physics & Astronomy
 
 Some University - 1 Main Street, Canada
 

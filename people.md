@@ -1,4 +1,4 @@
 ---
-layout: People
-title: "People"
+layout: people
+title: "people"
 ---
