@@ -1,0 +1,87 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    
+    <!-- 原有资源保留 -->
+    <link rel="stylesheet" href="{{ site.github.url }}/assets/libs/bootstrap/bootstrap.min.css">
+    <script defer src="{{ site.github.url }}/assets/libs/fontawesome/all.min.js"></script>
+    <link rel="stylesheet" href="{{ site.github.url }}/assets/css/main.css">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ site.github.url }}/assets/apple-icon-152x152.png">
+    <link rel="shortcut icon" href="{{ site.github.url }}/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+    <!-- 替换原有字体为 Inter（与设计匹配） -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 添加 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind 配置 -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#2a3898',      // 主色调
+              secondary: '#f39c12',    // 辅助色
+            },
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],  // 统一字体
+            },
+          }
+        }
+      }
+    </script>
+    
+    <!-- 自定义工具类和动画 -->
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+        .molecule-dot {
+          @apply absolute rounded-full animate-float;
+        }
+        .molecule-line {
+          @apply absolute h-0.5 bg-gray-200;
+        }
+        .nav-link::after {
+          content: '';
+          @apply absolute w-0 h-0.5 bottom-0 left-0 bg-primary transition-all duration-300;
+        }
+        .nav-link:hover::after {
+          @apply w-full;
+        }
+        .section {
+          @apply opacity-0 translate-y-8 transition-all duration-700;
+        }
+        .section.visible {
+          @apply opacity-100 translate-y-0;
+        }
+        .scroll-indicator {
+          @apply animate-bounce cursor-pointer;
+        }
+      }
+  
+      /* 分子浮动动画 */
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      
+      /* 滚动指示器动画 */
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+      }
+      
+      /* 全局样式 */
+      body {
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  
