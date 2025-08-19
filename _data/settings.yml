@@ -1,9 +1,9 @@
 menu:
-- {name: 'research', url: '/research'}
-- {name: 'publications', url: '/publications'}
-- {name: 'people', url: '/people'}
+- {name: 'Research', url: '/research'}
+- {name: 'Publications', url: '/publications'}
+- {name: 'People', url: '/people'}
 - {name: 'Cheng Zhang', url: '/Cheng Zhang'}
-- {name: 'Contact', url: '/Contact'}
+- {name: 'Contact', url: '/contact'}
 
 research:
 - {name: 'Organic Synthesis', url: 'Organic Synthesis'}
@@ -17,18 +17,21 @@ publications:
 - {name: 'Pharmacal Chemistry', url: 'stellar-structures'}
 
 people:
-- {name: 'Primary Investigator', title: 'Primary Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI1.jpg', url: 'primary-investigator'}
-- {name: 'Lu, Guangsheng', title: 'PostDoc', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/primary-investigator.jpg', url: 'primary-investigator'}
-- {name: 'Qu, Liye', title: 'PostDoc', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/primary-investigator.jpg', url: 'primary-investigator'}
-- {name: 'Wu, Yuxiang', title: 'PostDoc', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/lab-technician.jpg', url: 'lab-technician'}
-- {name: 'Lab Technician', title: 'researcher', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/lab-technician.jpg', url: 'lab-technician'}
-- {name: 'Dong, Menghan', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/graduate-student.jpg', url: 'graduate-student'}
-- {name: 'Zou, Pei', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/graduate-student.jpg', url: 'graduate-student'}
-- {name: 'Liu, Yuli', title: 'Lab Chelf', department: 'Pharmacy', institution: 'Jialidun University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/graduate-student.jpg', url: 'graduate-student'}
+- {name: 'Dr. Cheng Zhang', title: 'Primary Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI3.jpg', url: 'primary-investigator'}
+- {name: 'Dr. Lu, Guangsheng', title: 'PostDoc', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Lu.jpg', url: 'PostDoc'}
+- {name: 'Dr. Qu, Liye', title: 'PostDoc', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Qu.jpg', url: 'PostDoc'}
+- {name: 'Dr. Wu, Yunxiang', title: 'PostDoc', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Wu.jpg', url: 'PostDoc'}
+- {name: 'Zeng, Ru', title: 'Research Assistant', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Zeng.jpg', url: 'lab-technician'}
+- {name: 'Liang, Jiajie', title: 'Research Assistant', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Shou.jpg', url: 'lab-technician'}
+- {name: 'Shou, Qingguo', title: 'Research Assistant', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Liang.jpg', url: 'lab-technician'}
+- {name: 'Yao, Minghan', title: 'PhD Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Yao.png', url: 'graduate-student'}
+- {name: 'Dong, Menghan', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Dong.jpg', url: 'graduate-student'}
+- {name: 'Zou, Pei', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Zou.jpg', url: 'graduate-student'}
+- {name: 'Liu, Yuli', title: 'Lab Chelf', department: 'Pharmacy', institution: 'Jialidun University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/graduate-student.jpg', url: 'lab-technician'}
 
 Cheng Zhang:
-- {name: 'Primary Investigator', title: 'Primary Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI.jpg', url: 'primary-investigator'}
+- {name: 'Prof. Cheng Zhang', title: 'Primary Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI2.jpg', url: 'primary-investigator'}
 
 
-Contact:
-- {name: 'Prof. Zhang', title: 'Professor', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', phone: '(000) 000-0000', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/contact.jpg'}
+contact:
+- {name: 'Prof. Zhang', title: 'Professor', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI3.jpg'}

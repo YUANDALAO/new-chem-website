@@ -1,14 +1,13 @@
 ---
 layout: page
-title: "Graduate Student"
+title: "Lab Chelf"
 ---
 
-Master Student - Pharmacy
+Lab Chelf - Pharmacy
 
 Guangzhou Medical University - No.1 Xinzao Road, Panyu Campus
 
 Office: Technology Building 828
 
 ---
-
 

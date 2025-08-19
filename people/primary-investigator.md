@@ -7,8 +7,6 @@ Professor - Pharmacy
 
 Guangzhou Medical University - No.1 Xinzao Road, Panyu Campus
 
-Phone: (000) 000-0000
-
 Email: chengzhang@gzhmu.edu.cn
 
 Office: Technology Building 828
