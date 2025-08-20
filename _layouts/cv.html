@@ -6,27 +6,28 @@ layout: default
 
 <div class="row g-5 mb-5">
   <div>
-    <h3 class="fw-bold border-bottom pb-3 mb-5">CV</h3>
-    <div class="row g-5 mb-5">
-      <div class="col-md-2">
-        <h4>Education</h4>
-      </div>
-      <div class="col-md-10">
-        {% for section in site.data.cv.education %}
-          <p class="fw-bold">{{ section.title }}</p>
-          <p>{{ section.description }}</p>
-        {% endfor %}
-      </div>
-    </div>
     <div class="row g-5 mb-5">
       <div class="col-md-2">
         <h4>Academic Experience</h4>
       </div>
       <div class="col-md-10">
-        {% for section in site.data.cv.academic-experience %}
-          <p class="fw-bold">{{ section.title }}</p>
-          <p>{{ section.description }}</p>
-        {% endfor %}
+        <p class="fw-bold">Guangzhou Medical University</p>
+        <p>Junior Prof. in Pharmaceutical Sciences (2024 – Present)<br>Organic Synthesis Methodologies</p>
+        
+        <p class="fw-bold">Heidelberg University</p>
+        <p>Postdoc in Medicinal Chemistry (2021-2024)<br>Advisor: Christian D. Klein</p>
+      </div>
+    </div>
+    <div class="row g-5 mb-5">
+      <div class="col-md-2">
+        <h4>Education</h4>
+      </div>
+      <div class="col-md-10">
+        <p class="fw-bold">Heidelberg University</p>
+        <p>Ph.D. in Organic Chemistry (2018-2021)<br>Advisor: A. Stephen K. Hashmi</p>
+        
+        <p class="fw-bold">Soochow University</p>
+        <p>B.S. & M.Sc. in Chemistry (2011-2018)<br>Advisor: Xinfang Xu</p>
       </div>
     </div>
   </div>

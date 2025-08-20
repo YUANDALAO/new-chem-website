@@ -1,18 +1,20 @@
 <div class="row g-5 mb-5">
   <div>
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Contact</h3>
     {% for contact in site.data.settings.contact %}
-    <div class="row g-5 mb-5">
-      <div class="col-md-6">
+    <div class="row g-5 mb-5 align-items-center">
+      <div class="col-md-8">
         <h4>{{ contact.name }}</h4>
-        <p>{{ contact.title }} | {{ contact.department }}</p>
-        <p>{{ contact.institution }} | {{ contact.institution_address }}</p>
-        <p>Phone: {{ contact.phone }}</p>
+        <p>{{ contact.title }}</p>
+        <p>Research and Scholarly Interests: {{ contact.Research_and_Scholarly_Interests }}</p>
         <p>Email: {{ contact.email }}</p>
-        <p>Office: {{ contact.office }}</p>
+        <p>Office: {{ contact.office_location }}</p>
       </div>
-      <div class="col-md-6">
-        <img src="{{ site.github.url }}/{{ contact.image }}" alt="Contact" width="100%">
+      <div class="col-md-4 d-flex justify-content-center">
+        <!-- 移除比例容器，保持图片原始比例 -->
+        <img src="{{ site.github.url }}/{{ contact.image }}" 
+             alt="{{ contact.name }}" 
+             class="rounded shadow-sm img-fluid"
+             style="max-width: 280px; height: auto;">
       </div>
     </div>
     {% endfor %}

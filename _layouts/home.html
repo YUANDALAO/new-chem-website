@@ -2,23 +2,31 @@
 layout: default
 ---
 
-<div class="row g-5 mb-5">
-  <div class="col-md-6">
-    <h3 class="fw-bold">Research</h3>
-    {{ content }}
+<div class="container-sm"> <!-- 使用更小的容器 -->
+  <div class="row g-3 mb-4"> <!-- 减小间距 -->
+    <div class="col-md-12"> <!-- 将列宽改为12，占满整行 -->
+      <h3 class="fw-bold fs-4">Research</h3> <!-- 缩小标题 -->
+      <div style="font-size: 0.9rem;">{{ content }}</div> <!-- 缩小内容文字 -->
+    </div>
+    <!-- 移除图片列 -->
   </div>
-  <div class="col-md-6">
-    <img src="{{ site.github.url }}/assets/img/PI3.jpg" alt="Home" width="100%">
+
+  <!-- 缩小Publications部分 -->
+  <div style="margin: 1rem 0;">
+    <h3 class="fw-bold fs-4 mb-3">Publications</h3>
+    <div style="font-size: 0.9rem; line-height: 1.5;">
+      {% include publications.html %}
+    </div>
   </div>
-</div>
 
-{% include publications.html %}
-
-<div class="row g-5 mb-5">
-  <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
-    {% for post in site.posts %}
-      <p><a href="{{ site.github.url }}/{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
-    {% endfor %}
+  <div class="row g-3 mb-4"> <!-- 减小间距 -->
+    <div class="col-md-12">
+      <h3 class="fw-bold border-bottom pb-2 mb-3 fs-4">Updates</h3> <!-- 缩小标题和间距 -->
+      <div style="font-size: 0.9rem;"> <!-- 缩小更新列表文字 -->
+        {% for post in site.posts %}
+          <p class="mb-2"><a href="{{ site.github.url }}/{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
