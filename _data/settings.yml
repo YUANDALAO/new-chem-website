@@ -6,9 +6,9 @@ menu:
 - {name: 'Contact', url: '/contact'}
 
 research:
-- {name: 'Organic Synthesis'}
-- {name: 'Flavivirus Inhibitors'}
-- {name: 'AI/ML Deployment for Drug Discovery'}
+- {name: 'Organic Synthesis',url: 'Organic Synthesis'}
+- {name: 'Flavivirus Inhibitors',url: 'Flavivirus Inhibitors'}
+- {name: 'AI Deployment for Drug Discovery',url: 'AI Deployment for Drug Discovery'}
 
 publications:
 - {name: 'Microbiology', url: 'vector-calculus'}
@@ -28,6 +28,7 @@ people:
 - {name: 'Pei Zou', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Zou.jpg', url: 'pei-zou'}
 - {name: 'Junheng Wang', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/wang junheng.jpg', url: 'junheng-wang'}
 - {name: 'Yuli Liu', title: 'Lab Chelf', department: 'Pharmacy', institution: 'Jialidun University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/graduate-student.jpg', url: 'yuli-liu'}
+- {name: 'Dr. Yuan Chen', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Chen.jpg', url: 'dr-yuan-chen'}
 
 Chemical Library:
 - {name: 'Cheng Zhang', title: 'Principal Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI2.jpg', url: 'Principal-Investigator'}
