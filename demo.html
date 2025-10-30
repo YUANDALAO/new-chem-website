@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分子动画效果演示</title>
+  <style>
+    /* 页面基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .demo-container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 60px 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .instruction {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 40px;
+      font-size: 1.1em;
+      animation: pulse-instruction 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-instruction {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    /* ================================================
+       酷炫分子结构动画 CSS
+       ================================================ */
+
+    /* 分子容器 */
+    .molecule-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    /* 鼠标悬停整体放大 */
+    .molecule-container:hover {
+      transform: scale(1.15);
+    }
+
+    /* SVG 分子图标 */
+    .molecule-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 中心原子 */
+    .atom-center {
+      fill: #ffffff;
+      transition: all 0.3s ease;
+      animation: pulse-center 2s ease-in-out infinite;
+    }
+
+    .molecule-container:hover .atom-center {
+      fill: #ffd700;
+      filter: drop-shadow(0 0 15px #ffd700);
+    }
+
+    /* 外围原子 */
+    .atom {
+      fill: #e0e0e0;
+      transition: all 0.3s ease;
+    }
+
+    .molecule-container:hover .atom {
+      fill: #ff6b6b;
+      filter: drop-shadow(0 0 10px #ff6b6b);
+    }
+
+    /* 为每个原子添加独立的动画延迟 */
+    .atom-1 {
+      animation: orbit-1 3s ease-in-out infinite;
+    }
+
+    .atom-2 {
+      animation: orbit-2 3s ease-in-out infinite 0.5s;
+    }
+
+    .atom-3 {
+      animation: orbit-3 3s ease-in-out infinite 1s;
+    }
+
+    .atom-4 {
+      animation: orbit-4 3s ease-in-out infinite 1.5s;
+    }
+
+    .atom-5 {
+      animation: orbit-5 3s ease-in-out infinite 2s;
+    }
+
+    .atom-6 {
+      animation: orbit-6 3s ease-in-out infinite 2.5s;
+    }
+
+    /* 连接线 */
+    .bond {
+      stroke: #b0b0b0;
+      stroke-width: 2;
+      transition: all 0.3s ease;
+    }
+
+    .molecule-container:hover .bond {
+      stroke: #4ecdc4;
+      stroke-width: 3;
+      filter: drop-shadow(0 0 8px #4ecdc4);
+    }
+
+    /* 连接线动画 */
+    .bond {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: draw-line 2s ease-in-out forwards;
+    }
+
+    /* 鼠标悬停时闪烁 */
+    .molecule-container:hover .atom,
+    .molecule-container:hover .atom-center {
+      animation: blink 0.4s ease-in-out infinite;
+    }
+
+    /* ================================================
+       动画关键帧定义
+       ================================================ */
+
+    /* 中心原子脉动 */
+    @keyframes pulse-center {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    /* 闪烁动画 */
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* 连接线绘制动画 */
+    @keyframes draw-line {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* 轨道运动动画 */
+    @keyframes orbit-1 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(3px, -3px); }
+      50% { transform: translate(0, -4px); }
+      75% { transform: translate(-3px, -3px); }
+    }
+
+    @keyframes orbit-2 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(4px, 0); }
+      50% { transform: translate(3px, 3px); }
+      75% { transform: translate(0, 4px); }
+    }
+
+    @keyframes orbit-3 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(0, 4px); }
+      50% { transform: translate(-3px, 3px); }
+      75% { transform: translate(-4px, 0); }
+    }
+
+    @keyframes orbit-4 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(-4px, 0); }
+      50% { transform: translate(-3px, -3px); }
+      75% { transform: translate(0, -4px); }
+    }
+
+    @keyframes orbit-5 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(-3px, -3px); }
+      50% { transform: translate(0, -4px); }
+      75% { transform: translate(3px, -3px); }
+    }
+
+    @keyframes orbit-6 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(3px, 3px); }
+      50% { transform: translate(4px, 0); }
+      75% { transform: translate(3px, -3px); }
+    }
+
+    /* 旋转整个分子 */
+    .molecule-container:hover .molecule-icon {
+      animation: rotate-molecule 3s linear infinite;
+    }
+
+    @keyframes rotate-molecule {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* 发光效果 */
+    .molecule-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(78, 205, 196, 0.4) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .molecule-container:hover .molecule-glow {
+      opacity: 1;
+      animation: glow-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.3);
+      }
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .molecule-container {
+        width: 120px;
+        height: 120px;
+      }
+      
+      h1 {
+        font-size: 2em;
+      }
+      
+      .demo-container {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <h1>🧪 分子动画效果演示</h1>
+    <p class="subtitle">将鼠标悬停在分子上查看酷炫效果！</p>
+    
+    <!-- 分子图标 -->
+    <div class="molecule-container">
+      <!-- 发光背景 -->
+      <div class="molecule-glow"></div>
+      
+      <!-- SVG 分子图标 -->
+      <svg class="molecule-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- 连接线 -->
+        <line class="bond" x1="100" y1="100" x2="100" y2="40" />
+        <line class="bond" x1="100" y1="100" x2="152" y2="75" />
+        <line class="bond" x1="100" y1="100" x2="152" y2="125" />
+        <line class="bond" x1="100" y1="100" x2="100" y2="160" />
+        <line class="bond" x1="100" y1="100" x2="48" y2="125" />
+        <line class="bond" x1="100" y1="100" x2="48" y2="75" />
+        
+        <!-- 外围原子（小圆圈）-->
+        <circle class="atom atom-1" cx="100" cy="40" r="12" />
+        <circle class="atom atom-2" cx="152" cy="75" r="12" />
+        <circle class="atom atom-3" cx="152" cy="125" r="12" />
+        <circle class="atom atom-4" cx="100" cy="160" r="12" />
+        <circle class="atom atom-5" cx="48" cy="125" r="12" />
+        <circle class="atom atom-6" cx="48" cy="75" r="12" />
+        
+        <!-- 中心原子（大圆圈）-->
+        <circle class="atom-center" cx="100" cy="100" r="18" />
+      </svg>
+    </div>
+
+    <div class="instruction">
+      👆 试试把鼠标放上去！<br>
+      看看会发生什么神奇的事情~
+    </div>
+  </div>
+
+  <script>
+    // 可选：添加点击事件
+    document.querySelector('.molecule-container').addEventListener('click', function() {
+      console.log('分子被点击了！');
+      // 你可以在这里添加跳转或其他交互
+    });
+  </script>
+</body>
+</html>

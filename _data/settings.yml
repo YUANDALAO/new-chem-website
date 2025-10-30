@@ -2,7 +2,7 @@ menu:
 - {name: 'Research', url: '/research'}
 - {name: 'Publications', url: '/publications'}
 - {name: 'People', url: '/people'}
-- {name: 'Chemical Library', url: '/Chemical Library'}
+- {name: 'ChemLib', url: '/ChemLib'}
 - {name: 'Contact', url: '/contact'}
 
 research:
@@ -30,8 +30,8 @@ people:
 - {name: 'Yuli Liu', title: 'Lab Chelf', department: 'Pharmacy', institution: 'Jialidun University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/graduate-student.jpg', url: 'yuli-liu'}
 - {name: 'Dr. Yuan Chen', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Chen.jpg', url: 'dr-yuan-chen'}
 
-Chemical Library:
-- {name: 'Cheng Zhang', title: 'Principal Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI2.jpg', url: 'Principal-Investigator'}
+ChemLib:
+- {name: 'Cheng Zhang', title: 'Principal Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI2.jpg', url: 'ChemLib'}
 
 
 contact:
