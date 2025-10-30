@@ -4,7 +4,7 @@ title: Chemical Library
 permalink: /chemlib/
 ---
 
-<!-- 专业黑白风格 -->
+<!-- 专业黑白风格 + 性能优化 -->
 <style>
   /* 主容器 */
   .chem-container {
@@ -141,7 +141,7 @@ permalink: /chemlib/
     z-index: 1;
   }
 
-  /* 超强黑白转换 - 覆盖所有可能的颜色 */
+  /* 超强黑白转换 */
   .molecule-card .structure svg * {
     stroke: #000000 !important;
   }
@@ -159,7 +159,6 @@ permalink: /chemlib/
     stroke: none !important;
   }
 
-  /* 保持白色背景 */
   .molecule-card .structure svg rect[fill="#FFFFFF"],
   .molecule-card .structure svg ellipse[fill="#FFFFFF"] {
     fill: #FFFFFF !important;
@@ -174,6 +173,12 @@ permalink: /chemlib/
     border-top-color: #555;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
+  }
+
+  /* 占位符（懒加载用） */
+  .placeholder {
+    color: #999;
+    font-size: 0.9em;
   }
 
   /* 分子ID标签 */
@@ -227,7 +232,6 @@ permalink: /chemlib/
     }
   }
 
-  /* 辅助样式 */
   ::selection {
     background: #333;
     color: white;
@@ -253,9 +257,9 @@ permalink: /chemlib/
 
   <div class="molecule-grid" id="moleculeGrid">
     {% for molecule in site.data.molecules %}
-      <div class="molecule-card" data-id="{{ molecule.ID }}" style="animation-delay: {{ forloop.index | times: 0.05 }}s">
+      <div class="molecule-card" data-id="{{ molecule.ID }}" style="animation-delay: {{ forloop.index | times: 0.03 }}s">
         <div class="structure" data-smiles="{{ molecule.SMILES }}">
-          <div class="loading"></div>
+          <div class="placeholder">Loading...</div>
         </div>
         <p class="mol-id" title="Click to copy">{{ molecule.ID }}</p>
       </div>
@@ -263,16 +267,23 @@ permalink: /chemlib/
   </div>
 </div>
 
+<!-- 预加载RDKit -->
+<link rel="preload" href="https://unpkg.com/@rdkit/rdkit/Code/MinimalLib/dist/RDKit_minimal.js" as="script">
+
 <!-- RDKit库 -->
 <script src="https://unpkg.com/@rdkit/rdkit/Code/MinimalLib/dist/RDKit_minimal.js"></script>
 
-<!-- 主脚本 - 专业黑白版本 -->
+<!-- 主脚本 - 性能优化版本（带懒加载） -->
 <script>
-  // 配置
+  // 配置（性能优化）
   const CONFIG = {
-    batchSize: 20,
-    renderDelay: 50
+    lazyLoad: true,        // 启用懒加载
+    batchSize: 10,         // 减少批量大小
+    renderDelay: 150,      // 增加延迟
+    lazyMargin: '100px'    // 提前加载边距
   };
+
+  let RDKitInstance = null;
 
   // 超强黑白转换函数
   function forceBlackAndWhite(svgElement) {
@@ -302,18 +313,6 @@ permalink: /chemlib/
         }
       }
     });
-    
-    setTimeout(() => {
-      allElements.forEach(el => {
-        if (el.tagName.toLowerCase() !== 'text') {
-          const stroke = el.getAttribute('stroke');
-          if (stroke && stroke !== 'none' && stroke !== '#000000') {
-            el.setAttribute('stroke', '#000000');
-            el.style.stroke = '#000000';
-          }
-        }
-      });
-    }, 10);
   }
 
   // 绘制单个分子
@@ -330,17 +329,6 @@ permalink: /chemlib/
         const svgElement = holder.querySelector('svg');
         forceBlackAndWhite(svgElement);
         
-        if (svgElement) {
-          const observer = new MutationObserver(() => {
-            forceBlackAndWhite(svgElement);
-          });
-          observer.observe(svgElement, {
-            attributes: true,
-            childList: true,
-            subtree: true
-          });
-        }
-        
         mol.delete();
       } else {
         holder.innerHTML = '<div class="error-msg">Invalid SMILES</div>';
@@ -351,12 +339,46 @@ permalink: /chemlib/
     }
   }
 
-  // 批量渲染分子
+  // 懒加载功能（性能优化关键）
+  function setupLazyLoading(RDKit) {
+    const observerOptions = {
+      root: null,
+      rootMargin: CONFIG.lazyMargin,
+      threshold: 0.01
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const holder = entry.target.querySelector('.structure');
+          if (holder && holder.dataset.smiles && !holder.dataset.loaded) {
+            // 添加加载动画
+            holder.innerHTML = '<div class="loading"></div>';
+            
+            // 延迟渲染以避免阻塞
+            setTimeout(() => {
+              drawMolecule(holder, RDKit);
+              holder.dataset.loaded = 'true';
+            }, 50);
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.molecule-card').forEach(card => {
+      observer.observe(card);
+    });
+  }
+
+  // 批量渲染（非懒加载模式）
   function renderBatch(molecules, startIndex, RDKit) {
     const endIndex = Math.min(startIndex + CONFIG.batchSize, molecules.length);
     
     for (let i = startIndex; i < endIndex; i++) {
-      drawMolecule(molecules[i], RDKit);
+      const holder = molecules[i];
+      holder.innerHTML = '<div class="loading"></div>';
+      drawMolecule(holder, RDKit);
     }
 
     if (endIndex < molecules.length) {
@@ -418,14 +440,22 @@ permalink: /chemlib/
 
   // 初始化
   window.initRDKitModule().then((RDKit) => {
+    RDKitInstance = RDKit;
     window.RDKit = RDKit;
     console.log('✓ RDKit loaded successfully');
 
     const initPage = () => {
       const moleculeHolders = document.querySelectorAll('.structure[data-smiles]');
       console.log(`Found ${moleculeHolders.length} molecules`);
+      console.log(`Lazy loading: ${CONFIG.lazyLoad ? 'enabled' : 'disabled'}`);
       
-      renderBatch(Array.from(moleculeHolders), 0, RDKit);
+      // 根据配置选择渲染方式
+      if (CONFIG.lazyLoad) {
+        setupLazyLoading(RDKit);
+      } else {
+        renderBatch(Array.from(moleculeHolders), 0, RDKit);
+      }
+      
       setupSearch();
       setupViewToggle();
       setupCopyId();

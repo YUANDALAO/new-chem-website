@@ -1,0 +1,456 @@
+---
+layout: default
+title: Home
+---
+
+<style>
+  /* 强制重置 layout 的样式 */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #2c3540;
+    overflow-x: hidden;
+  }
+
+  .wrapper, .container, main, article {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+
+  /* 固定导航栏 */
+  .home-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139, 156, 182, 0.1);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .home-logo {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #2c3540;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-subtitle {
+    font-size: 0.65em;
+    font-weight: 400;
+    color: #7f8994;
+  }
+
+  .home-nav {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+  }
+
+  .home-nav a {
+    color: #5a6471;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1em;
+    transition: color 0.3s;
+  }
+
+  .home-nav a:hover {
+    color: #8b9cb6;
+  }
+
+  /* 全屏区域 */
+  .full-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px 60px;
+    position: relative;
+  }
+
+  /* 第一屏 - 英雄区域 */
+  .hero-section {
+    background: linear-gradient(135deg, #f0f3f7 0%, #e5eaf0 100%);
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .hero-section h1 {
+    font-size: 4em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #2c3540;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-section p {
+    font-size: 1.25em;
+    line-height: 1.8;
+    color: #5a6471;
+    margin-bottom: 45px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 16px 45px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05em;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: #8b9cb6;
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 156, 182, 0.15);
+  }
+
+  .btn-primary:hover {
+    background: #7a8ba3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(139, 156, 182, 0.25);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: #8b9cb6;
+    border: 2px solid #8b9cb6;
+  }
+
+  .btn-secondary:hover {
+    background: #8b9cb6;
+    color: white;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  .scroll-indicator svg {
+    width: 30px;
+    height: 30px;
+    stroke: #5a6471;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+  }
+
+  /* 第二屏 - 研究特色 */
+  .features-section {
+    background: white;
+  }
+
+  .features-container {
+    max-width: 1400px;
+    width: 100%;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 70px;
+    color: #2c3540;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: 50px 30px;
+    background: #f8f9fb;
+    border-radius: 20px;
+    transition: all 0.4s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    background: white;
+    box-shadow: 0 15px 40px rgba(139, 156, 182, 0.12);
+  }
+
+  .feature-icon {
+    font-size: 4em;
+    margin-bottom: 25px;
+    display: block;
+  }
+
+  .feature-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #2c3540;
+    font-weight: 600;
+  }
+
+  .feature-card p {
+    color: #5a6471;
+    line-height: 1.7;
+    font-size: 0.95em;
+  }
+
+  /* 第三屏 - 最新成果 */
+  .publications-section {
+    background: linear-gradient(135deg, #f7f8fa 0%, #ebeef2 100%);
+  }
+
+  .publications-container {
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .publication-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(139, 156, 182, 0.08);
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+  }
+
+  .publication-card:hover {
+    border-left-color: #8b9cb6;
+    box-shadow: 0 8px 30px rgba(139, 156, 182, 0.15);
+    transform: translateX(5px);
+  }
+
+  .pub-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #2c3540;
+  }
+
+  .pub-meta {
+    color: #7f8994;
+    font-size: 0.95em;
+    margin-bottom: 18px;
+  }
+
+  .pub-abstract {
+    color: #5a6471;
+    line-height: 1.7;
+  }
+
+  .view-all {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  /* 平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 响应式 */
+  @media (max-width: 1200px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      padding: 15px 20px;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .home-nav {
+      gap: 15px;
+      font-size: 0.9em;
+    }
+
+    .full-section {
+      padding: 100px 20px 40px;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5em;
+    }
+
+    .hero-section p {
+      font-size: 1.1em;
+    }
+
+    .section-title {
+      font-size: 2em;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    .feature-card {
+      padding: 40px 25px;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .home-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<!-- 固定导航栏 -->
+<header class="home-header">
+  <div class="header-content">
+    <a href="/" class="home-logo">
+      Zhang Laboratory
+      <span class="logo-subtitle">Organic Synthesis for Drug Discovery</span>
+    </a>
+    <nav class="home-nav">
+      <a href="/research/">Research</a>
+      <a href="/publications/">Publications</a>
+      <a href="/people/">People</a>
+      <a href="/chemlib/">ChemLib</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 第一屏：英雄区域 -->
+<section class="full-section hero-section">
+  <div class="hero-content">
+    <h1>Zhang Laboratory</h1>
+    <p>
+      The Zhang Laboratory is dedicated to the innovation of novel reaction methodologies. 
+      We seek to discover molecular structure and reactivity that can contribute to 
+      interdisciplinary solutions for challenges in human health.
+    </p>
+    <div class="cta-buttons">
+      <a href="/research/" class="btn btn-primary">Our Research</a>
+      <a href="/chemlib/" class="btn btn-secondary">Compound Library</a>
+    </div>
+  </div>
+  <div class="scroll-indicator" onclick="document.querySelector('.features-section').scrollIntoView({behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- 第二屏：研究特色 -->
+<section class="full-section features-section">
+  <div class="features-container">
+    <h2 class="section-title">Research Focus</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🔬</span>
+        <h3>Novel Synthesis</h3>
+        <p>Developing cutting-edge synthetic routes for complex drug-like molecules</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">💊</span>
+        <h3>Drug Discovery</h3>
+        <p>Rational design and optimization of bioactive compounds</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">🧬</span>
+        <h3>Medicinal Chemistry</h3>
+        <p>Structure-activity relationship studies and lead optimization</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">🤖</span>
+        <h3>Computational Tools</h3>
+        <p>Machine learning and molecular modeling for optimization</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第三屏：最新成果 -->
+<section class="full-section publications-section">
+  <div class="publications-container">
+    <h2 class="section-title">Recent Publications</h2>
+    
+    <div class="publication-card">
+      <div class="pub-title">
+        Novel Synthetic Approach to Complex Heterocycles via Cascade Reactions
+      </div>
+      <div class="pub-meta">
+        Nature Chemistry • 2024 • Impact Factor: 21.687
+      </div>
+      <div class="pub-abstract">
+        We report a general strategy for the synthesis of polycyclic heterocycles through palladium-catalyzed cascade reactions...
+      </div>
+    </div>
+
+    <div class="publication-card">
+      <div class="pub-title">
+        Machine Learning-Guided Optimization of Drug-Like Compounds
+      </div>
+      <div class="pub-meta">
+        Journal of Medicinal Chemistry • 2024 • Impact Factor: 7.446
+      </div>
+      <div class="pub-abstract">
+        Integration of computational predictions with experimental validation accelerates lead optimization...
+      </div>
+    </div>
+
+    <div class="view-all">
+      <a href="/publications/" class="btn btn-primary">View All Publications</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,428 @@
+---
+layout: default
+title: Home
+---
+
+<style>
+  /* 柔和的配色方案 */
+  :root {
+    --primary-color: #6b8dd6;
+    --secondary-color: #8fa4d4;
+    --accent-color: #a8c0e8;
+    --text-dark: #2c3e50;
+    --text-medium: #5a6c7d;
+    --text-light: #7f8c9a;
+    --bg-light: #f8f9fb;
+    --shadow-soft: rgba(107, 141, 214, 0.1);
+  }
+
+  /* 英雄区域 - 柔和渐变 */
+  .hero {
+    background: linear-gradient(135deg, #e8eef7 0%, #d4e1f5 100%);
+    color: var(--text-dark);
+    padding: 100px 20px;
+    text-align: center;
+    margin: -40px -40px 80px -40px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(107, 141, 214, 0.1);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(107, 141, 214, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(143, 164, 212, 0.05) 0%, transparent 50%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s;
+    color: var(--text-dark);
+  }
+
+  .hero p {
+    font-size: 1.25em;
+    margin-bottom: 35px;
+    color: var(--text-medium);
+    line-height: 1.7;
+    animation: fadeInUp 1s 0.3s backwards;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s 0.6s backwards;
+  }
+
+  .btn {
+    padding: 14px 40px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px var(--shadow-soft);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 141, 214, 0.2);
+    background: #5a7bc4;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  }
+
+  .btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  /* 统计数据 */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: -50px auto 80px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .stat-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-soft);
+    text-align: center;
+    transition: all 0.3s;
+    border-top: 3px solid var(--accent-color);
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(107, 141, 214, 0.15);
+    border-top-color: var(--primary-color);
+  }
+
+  .stat-number {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    color: var(--text-medium);
+    font-size: 0.95em;
+    font-weight: 500;
+  }
+
+  /* 特色卡片 */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 40px 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-soft);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid transparent;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(107, 141, 214, 0.15);
+  }
+
+  .feature-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .feature-icon {
+    font-size: 3em;
+    margin-bottom: 20px;
+    display: inline-block;
+    filter: grayscale(0.2);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .feature-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  .feature-card p {
+    color: var(--text-medium);
+    line-height: 1.7;
+    font-size: 1.02em;
+  }
+
+  /* 最新成果区域 */
+  .recent-section {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 0 20px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-header h2 {
+    font-size: 2.3em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .section-header p {
+    color: var(--text-medium);
+    font-size: 1.1em;
+  }
+
+  .publication-card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 3px 15px var(--shadow-soft);
+    margin-bottom: 22px;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+  }
+
+  .publication-card:hover {
+    border-left-color: var(--primary-color);
+    box-shadow: 0 6px 25px rgba(107, 141, 214, 0.12);
+    transform: translateX(5px);
+  }
+
+  .pub-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .pub-meta {
+    color: var(--text-light);
+    font-size: 0.92em;
+    margin-bottom: 14px;
+  }
+
+  .pub-abstract {
+    color: var(--text-medium);
+    line-height: 1.6;
+  }
+
+  /* 动画 */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.2em;
+    }
+
+    .hero p {
+      font-size: 1.1em;
+    }
+
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .features {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-number {
+      font-size: 2.2em;
+    }
+  }
+</style>
+
+<!-- 英雄区域 -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>🧪 Zhang Laboratory</h1>
+    <p>Pioneering Organic Synthesis for Next-Generation Drug Discovery</p>
+    <div class="cta-buttons">
+      <a href="/research/" class="btn btn-primary">Our Research</a>
+      <a href="/chemlib/" class="btn btn-secondary">Compound Library</a>
+    </div>
+  </div>
+</div>
+
+<!-- 统计数据 -->
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-number">150+</div>
+    <div class="stat-label">Compounds Synthesized</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">25+</div>
+    <div class="stat-label">Publications</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">10+</div>
+    <div class="stat-label">Active Projects</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">5+</div>
+    <div class="stat-label">Collaborations</div>
+  </div>
+</div>
+
+<!-- 研究特色 -->
+<div class="features">
+  <div class="feature-card">
+    <div class="feature-icon">🔬</div>
+    <h3>Novel Synthesis</h3>
+    <p>Developing cutting-edge synthetic routes for complex drug-like molecules with high efficiency and selectivity</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">💊</div>
+    <h3>Drug Discovery</h3>
+    <p>Rational design and optimization of bioactive compounds targeting critical disease pathways</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">🧬</div>
+    <h3>Medicinal Chemistry</h3>
+    <p>Structure-activity relationship studies and lead optimization for pharmaceutical development</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">📊</div>
+    <h3>Compound Library</h3>
+    <p>Curated collection of synthesized molecules with comprehensive characterization data</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">🤖</div>
+    <h3>Computational Tools</h3>
+    <p>Machine learning and molecular modeling for reaction prediction and property optimization</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">🌐</div>
+    <h3>Collaboration</h3>
+    <p>Partnering with leading institutions worldwide to advance chemical biology research</p>
+  </div>
+</div>
+
+<!-- 最新成果 -->
+<div class="recent-section">
+  <div class="section-header">
+    <h2>Recent Publications</h2>
+    <p>Latest advances from our laboratory</p>
+  </div>
+
+  <div class="publication-card">
+    <div class="pub-title">
+      Novel Synthetic Approach to Complex Heterocycles via Cascade Reactions
+    </div>
+    <div class="pub-meta">
+      Nature Chemistry • 2024 • Impact Factor: 21.687
+    </div>
+    <div class="pub-abstract">
+      We report a general strategy for the synthesis of polycyclic heterocycles through palladium-catalyzed cascade reactions...
+    </div>
+  </div>
+
+  <div class="publication-card">
+    <div class="pub-title">
+      Machine Learning-Guided Optimization of Drug-Like Compounds
+    </div>
+    <div class="pub-meta">
+      Journal of Medicinal Chemistry • 2024 • Impact Factor: 7.446
+    </div>
+    <div class="pub-abstract">
+      Integration of computational predictions with experimental validation accelerates lead optimization...
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="/publications/" class="btn btn-primary">View All Publications</a>
+  </div>
+</div>
