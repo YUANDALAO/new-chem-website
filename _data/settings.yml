@@ -2,7 +2,7 @@ menu:
 - {name: 'Research', url: '/research'}
 - {name: 'Publications', url: '/publications'}
 - {name: 'People', url: '/people'}
-- {name: 'ChemLib', url: '/ChemLib'}
+- {name: 'ChemLib', url: '/chemLib'}
 - {name: 'Contact', url: '/contact'}
 
 research:
