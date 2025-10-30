@@ -4,7 +4,7 @@ title: Chemical Library
 permalink: /chemlib/
 ---
 
-<!-- 现代化样式 -->
+<!-- 专业黑白风格 -->
 <style>
   /* 主容器 */
   .chem-container {
@@ -23,11 +23,9 @@ permalink: /chemlib/
   .header-section h1 {
     font-size: 2.8em;
     font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #2c3e50;
     margin-bottom: 15px;
+    letter-spacing: -0.5px;
   }
 
   .header-section p {
@@ -55,7 +53,7 @@ permalink: /chemlib/
   .search-box input {
     width: 100%;
     padding: 12px 20px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #ddd;
     border-radius: 25px;
     font-size: 1em;
     transition: all 0.3s;
@@ -63,8 +61,8 @@ permalink: /chemlib/
   }
 
   .search-box input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #555;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
   }
 
   .view-toggle {
@@ -74,18 +72,24 @@ permalink: /chemlib/
 
   .view-btn {
     padding: 10px 20px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #ddd;
     background: white;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 500;
+    color: #555;
+  }
+
+  .view-btn:hover {
+    border-color: #555;
+    background: #f8f9fa;
   }
 
   .view-btn.active {
-    background: #667eea;
+    background: #333;
     color: white;
-    border-color: #667eea;
+    border-color: #333;
   }
 
   /* 分子网格 */
@@ -99,19 +103,20 @@ permalink: /chemlib/
   /* 分子卡片 */
   .molecule-card {
     background: white;
-    border: none;
-    border-radius: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     animation: fadeInUp 0.5s ease-out forwards;
   }
 
   .molecule-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: #ccc;
   }
 
   /* 结构容器 */
@@ -121,22 +126,12 @@ permalink: /chemlib/
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    border-radius: 12px;
+    background: #fafafa;
+    border-radius: 8px;
     margin-bottom: 15px;
     position: relative;
     overflow: hidden;
-  }
-
-  .molecule-card .structure::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-    animation: pulse 3s ease-in-out infinite;
+    border: 1px solid #f0f0f0;
   }
 
   .molecule-card .structure svg {
@@ -146,14 +141,28 @@ permalink: /chemlib/
     z-index: 1;
   }
 
-  /* 强制分子结构为纯黑白显示 */
-  .molecule-card .structure svg path[stroke]:not([stroke='none']),
-  .molecule-card .structure svg ellipse[stroke]:not([stroke='none']) {
+  /* 超强黑白转换 - 覆盖所有可能的颜色 */
+  .molecule-card .structure svg * {
+    stroke: #000000 !important;
+  }
+
+  .molecule-card .structure svg path,
+  .molecule-card .structure svg line,
+  .molecule-card .structure svg polyline,
+  .molecule-card .structure svg ellipse,
+  .molecule-card .structure svg circle {
     stroke: #000000 !important;
   }
 
   .molecule-card .structure svg text {
     fill: #000000 !important;
+    stroke: none !important;
+  }
+
+  /* 保持白色背景 */
+  .molecule-card .structure svg rect[fill="#FFFFFF"],
+  .molecule-card .structure svg ellipse[fill="#FFFFFF"] {
+    fill: #FFFFFF !important;
   }
 
   /* 加载动画 */
@@ -161,8 +170,8 @@ permalink: /chemlib/
     display: inline-block;
     width: 30px;
     height: 30px;
-    border: 3px solid rgba(102, 126, 234, 0.3);
-    border-top-color: #667eea;
+    border: 3px solid #e0e0e0;
+    border-top-color: #555;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
   }
@@ -170,27 +179,24 @@ permalink: /chemlib/
   /* 分子ID标签 */
   .molecule-card .mol-id {
     font-weight: 600;
-    color: #333;
+    color: #2c3e50;
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 1.1em;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     margin-top: 10px;
     cursor: pointer;
+    transition: color 0.3s;
   }
 
   .molecule-card .mol-id:hover {
-    opacity: 0.8;
+    color: #000;
   }
 
   /* 错误提示 */
   .error-msg {
-    color: #e74c3c;
+    color: #d63031;
     font-size: 0.9em;
     padding: 10px;
-    background: #fee;
+    background: #ffe5e5;
     border-radius: 8px;
   }
 
@@ -209,11 +215,6 @@ permalink: /chemlib/
     to { transform: rotate(360deg); }
   }
 
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale(1.1); opacity: 0.5; }
-  }
-
   /* 响应式 */
   @media (max-width: 768px) {
     .molecule-grid {
@@ -225,12 +226,18 @@ permalink: /chemlib/
       font-size: 2em;
     }
   }
+
+  /* 辅助样式 */
+  ::selection {
+    background: #333;
+    color: white;
+  }
 </style>
 
 <!-- 页面内容 -->
 <div class="chem-container">
   <div class="header-section">
-    <h1>🧪 Compound Library</h1>
+    <h1>Chemical Library</h1>
     <p>Explore our collection with interactive 2D structures</p>
   </div>
 
@@ -259,15 +266,57 @@ permalink: /chemlib/
 <!-- RDKit库 -->
 <script src="https://unpkg.com/@rdkit/rdkit/Code/MinimalLib/dist/RDKit_minimal.js"></script>
 
-<!-- 主脚本 - 优化版 -->
+<!-- 主脚本 - 专业黑白版本 -->
 <script>
   // 配置
   const CONFIG = {
-    batchSize: 20, // 每批渲染的分子数量
-    renderDelay: 50 // 每批之间的延迟（毫秒）
+    batchSize: 20,
+    renderDelay: 50
   };
 
-  // 绘制单个分子（纯黑白版本）
+  // 超强黑白转换函数
+  function forceBlackAndWhite(svgElement) {
+    if (!svgElement) return;
+    
+    const allElements = svgElement.querySelectorAll('*');
+    allElements.forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+      
+      if (tagName === 'text') {
+        el.setAttribute('fill', '#000000');
+        el.setAttribute('stroke', 'none');
+        el.style.fill = '#000000';
+        el.style.stroke = 'none';
+      } else if (tagName === 'path' || tagName === 'line' || tagName === 'polyline' || tagName === 'ellipse' || tagName === 'circle') {
+        const currentFill = el.getAttribute('fill');
+        const currentStroke = el.getAttribute('stroke');
+        
+        if (currentStroke && currentStroke !== 'none') {
+          el.setAttribute('stroke', '#000000');
+          el.style.stroke = '#000000';
+        }
+        
+        if (currentFill && currentFill !== 'none' && currentFill.toLowerCase() !== '#ffffff' && currentFill.toLowerCase() !== 'white') {
+          el.setAttribute('fill', '#000000');
+          el.style.fill = '#000000';
+        }
+      }
+    });
+    
+    setTimeout(() => {
+      allElements.forEach(el => {
+        if (el.tagName.toLowerCase() !== 'text') {
+          const stroke = el.getAttribute('stroke');
+          if (stroke && stroke !== 'none' && stroke !== '#000000') {
+            el.setAttribute('stroke', '#000000');
+            el.style.stroke = '#000000';
+          }
+        }
+      });
+    }, 10);
+  }
+
+  // 绘制单个分子
   function drawMolecule(holder, RDKit) {
     const smiles = holder.dataset.smiles;
     if (!smiles || !smiles.trim()) return;
@@ -275,30 +324,20 @@ permalink: /chemlib/
     try {
       const mol = RDKit.get_mol(smiles);
       if (mol && mol.is_valid()) {
-        // 生成SVG
         const svg = mol.get_svg(200, 200);
         holder.innerHTML = svg;
         
-        // 强制所有原子和键显示为黑色
         const svgElement = holder.querySelector('svg');
+        forceBlackAndWhite(svgElement);
+        
         if (svgElement) {
-          // 将所有带颜色的path和ellipse改为黑色
-          const coloredElements = svgElement.querySelectorAll('path[stroke], ellipse[stroke]');
-          coloredElements.forEach(el => {
-            const stroke = el.getAttribute('stroke');
-            if (stroke && stroke !== 'none') {
-              el.setAttribute('stroke', '#000000');
-            }
-            const fill = el.getAttribute('fill');
-            if (fill && fill !== 'none' && fill !== '#FFFFFF') {
-              el.setAttribute('fill', '#000000');
-            }
+          const observer = new MutationObserver(() => {
+            forceBlackAndWhite(svgElement);
           });
-          
-          // 处理文本元素
-          const textElements = svgElement.querySelectorAll('text');
-          textElements.forEach(el => {
-            el.setAttribute('fill', '#000000');
+          observer.observe(svgElement, {
+            attributes: true,
+            childList: true,
+            subtree: true
           });
         }
         
@@ -312,7 +351,7 @@ permalink: /chemlib/
     }
   }
 
-  // 批量渲染分子（性能优化）
+  // 批量渲染分子
   function renderBatch(molecules, startIndex, RDKit) {
     const endIndex = Math.min(startIndex + CONFIG.batchSize, molecules.length);
     
@@ -361,7 +400,7 @@ permalink: /chemlib/
     });
   }
 
-  // 复制ID到剪贴板
+  // 复制ID
   function setupCopyId() {
     document.querySelectorAll('.mol-id').forEach(label => {
       label.addEventListener('click', () => {
@@ -386,10 +425,7 @@ permalink: /chemlib/
       const moleculeHolders = document.querySelectorAll('.structure[data-smiles]');
       console.log(`Found ${moleculeHolders.length} molecules`);
       
-      // 批量渲染以提高性能
       renderBatch(Array.from(moleculeHolders), 0, RDKit);
-      
-      // 设置交互功能
       setupSearch();
       setupViewToggle();
       setupCopyId();
@@ -406,7 +442,7 @@ permalink: /chemlib/
     if (grid) {
       grid.innerHTML = `
         <div style="grid-column: 1/-1; text-align: center; padding: 60px;">
-          <h2 style="color: #e74c3c;">Failed to load RDKit</h2>
+          <h2 style="color: #d63031;">Failed to load RDKit</h2>
           <p>Please refresh the page or check your internet connection</p>
         </div>
       `;
