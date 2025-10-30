@@ -1,23 +1,17 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  {% include head.html %}
+  <body>
+    {{ content }}
+  </body>
+</html>
 
-<div class="container-sm"> <!-- 使用更小的容器 -->
-  <div class="row g-3 mb-4"> <!-- 减小间距 -->
-    <div class="col-md-12"> <!-- 将列宽改为12，占满整行 -->
-      <h3 class="fw-bold fs-4">Research</h3> <!-- 缩小标题 -->
-      <div style="font-size: 0.9rem;">{{ content }}</div> <!-- 缩小内容文字 -->
-    </div>
-    <!-- 移除图片列 -->
-  </div>
-
-
-  <div class="row g-3 mb-4"> <!-- 减小间距 -->
-    <div class="col-md-12">
-      <h3 class="fw-bold border-bottom pb-2 mb-3 fs-4">Updates</h3> <!-- 缩小标题和间距 -->
-      <div style="font-size: 0.9rem;"> <!-- 缩小更新列表文字 -->
-        Thank you for visiting our website. We are always pleased to welcome applications to join our group. Highly motivated and outstanding candidates with a passion for synthetic or medicinal chemistry are strongly encouraged to apply.
-      </div>
-    </div>
-  </div>
-</div>
+<style>
+  /* 首页专用样式 */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #2c3540;
+  }
+</style>

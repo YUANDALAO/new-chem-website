@@ -1,15 +1,113 @@
-<header class="d-flex flex-column flex-md-row align-items-center pb-3 mb-5 border-bottom">
-  <div>
-    <a href="{{ site.github.url }}/" class="d-flex align-items-center text-decoration-none">
-      <span class="fs-4 fw-bold">{{ site.title }}</span>
+<style>
+  /* 固定导航栏样式 */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139, 156, 182, 0.1);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-logo {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #2c3540;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-subtitle {
+    font-size: 0.65em;
+    font-weight: 400;
+    color: #7f8994;
+  }
+
+  .site-nav {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+  }
+
+  .site-nav a {
+    color: #5a6471;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .site-nav a:hover {
+    color: #8b9cb6;
+  }
+
+  .site-nav a.active {
+    color: #8b9cb6;
+  }
+
+  /* 为固定导航栏留出空间 */
+  body {
+    padding-top: 80px;
+  }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px 20px;
+    }
+
+    .site-nav {
+      gap: 15px;
+      font-size: 0.9em;
+    }
+
+    body {
+      padding-top: 120px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .site-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .site-nav a {
+      font-size: 0.85em;
+    }
+  }
+</style>
+
+<header class="site-header">
+  <div class="header-content">
+    <a href="/" class="site-logo">
+      Zhang Laboratory
+      <span class="logo-subtitle">Organic Synthesis for Drug Discovery</span>
     </a>
-    <a href="{{ site.github.url }}/" class="d-flex align-items-center text-decoration-none">
-      <span>{{ site.description }}</span>
-    </a>
+    <nav class="site-nav">
+      <a href="/research/">Research</a>
+      <a href="/publications/">Publications</a>
+      <a href="/people/">People</a>
+      <a href="/chemlib/">ChemLib</a>
+      <a href="/contact/">Contact</a>
+    </nav>
   </div>
-  <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-    {% for item in site.data.settings.menu %}
-      <a class="me-3 py-2 text-decoration-none" href="{{ site.github.url }}{{ item.url }}">{{ item.name }}</a>
-    {% endfor %}
-  </nav>
 </header>
