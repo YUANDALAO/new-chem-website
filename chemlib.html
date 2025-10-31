@@ -1,0 +1,431 @@
+---
+layout: default
+title: Chemical Library
+---
+
+<style>
+  .chemlib-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .chemlib-header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #2c3540;
+    margin-bottom: 12px;
+  }
+
+  .chemlib-header p {
+    font-size: 1.1em;
+    color: #5a6471;
+  }
+
+  .filter-section {
+    background: #f8f9fb;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 35px;
+  }
+
+  .search-box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 18px;
+  }
+
+  .search-box input {
+    flex: 1;
+    padding: 11px 18px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 1em;
+  }
+
+  .search-box button {
+    padding: 11px 28px;
+    background: #8b9cb6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .search-box button:hover {
+    background: #7a8ba3;
+  }
+
+  .filter-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-tag {
+    padding: 7px 15px;
+    background: white;
+    border: 1px solid #d0d5dd;
+    border-radius: 18px;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+
+  .filter-tag:hover,
+  .filter-tag.active {
+    background: #8b9cb6;
+    color: white;
+    border-color: #8b9cb6;
+  }
+
+  /* 分子卡片网格 - 统一尺寸 */
+  .compound-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .compound-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 420px; /* 固定高度 */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+  }
+
+  .compound-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(139, 156, 182, 0.15);
+    border-color: #8b9cb6;
+  }
+
+  /* 结构容器 - 关键改进！ */
+  .structure-container {
+    background: #fafafa;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 280px; /* 固定高度 */
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SVG/图片统一样式 - 确保完全一致 */
+  .structure-container img,
+  .structure-container svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: 240px !important;   /* 强制统一宽度 */
+    height: 240px !important;  /* 强制统一高度 */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* 确保 SVG 内部元素不受缩放影响 */
+  .structure-container svg {
+    image-rendering: crisp-edges;
+    shape-rendering: geometricPrecision;
+  }
+
+  .compound-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .compound-id {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #2c3540;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .compound-name {
+    font-size: 0.9em;
+    color: #5a6471;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    min-height: 40px;
+  }
+
+  .compound-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .compound-tag {
+    padding: 5px 10px;
+    background: #e8eef7;
+    color: #8b9cb6;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 500;
+  }
+
+  .series-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #2c3540;
+    margin: 50px 0 28px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #8b9cb6;
+  }
+
+  .series-title:first-of-type {
+    margin-top: 10px;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 35px;
+    padding: 18px;
+    background: #f8f9fb;
+    border-radius: 12px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 2em;
+    font-weight: 700;
+    color: #8b9cb6;
+  }
+
+  .stat-label {
+    font-size: 0.9em;
+    color: #5a6471;
+    margin-top: 4px;
+  }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .compound-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    
+    .compound-card {
+      height: 380px;
+    }
+    
+    .structure-container {
+      height: 240px;
+    }
+    
+    .structure-container img,
+    .structure-container svg {
+      width: 200px !important;
+      height: 200px !important;
+    }
+  }
+</style>
+
+<div class="chemlib-header">
+  <h1>Chemical Library</h1>
+  <p>Explore our collection with interactive 2D structures</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">150+</div>
+    <div class="stat-label">Compounds</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">15</div>
+    <div class="stat-label">Series</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">95%</div>
+    <div class="stat-label">Purity</div>
+  </div>
+</div>
+
+<div class="filter-section">
+  <div class="search-box">
+    <input type="text" placeholder="Search by ID...">
+    <button>Search</button>
+  </div>
+  <div class="filter-tags">
+    <div class="filter-tag active">All</div>
+    <div class="filter-tag">Heterocycles</div>
+    <div class="filter-tag">Scaffolds</div>
+    <div class="filter-tag">Drug-like</div>
+  </div>
+</div>
+
+<h2 class="series-title">Series A - Heterocyclic Compounds</h2>
+<div class="compound-grid">
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/A002.svg" alt="A002">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">A002</div>
+      <div class="compound-name">2,5-Disubstituted oxazole derivative</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Heterocycle</span>
+        <span class="compound-tag">Oxazole</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/A003.svg" alt="A003">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">A003</div>
+      <div class="compound-name">Modified oxazole analog</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Heterocycle</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/A004.svg" alt="A004">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">A004</div>
+      <div class="compound-name">Benzofuran-thiazole hybrid</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Hybrid</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/A005.svg" alt="A005">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">A005</div>
+      <div class="compound-name">Pyrrole-thiazole conjugate</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Conjugate</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="series-title">Series B - Benzothiazole Derivatives</h2>
+<div class="compound-grid">
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/B001.svg" alt="B001">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">B001</div>
+      <div class="compound-name">2-Oxobenzothiazole</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Benzothiazole</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/B002.svg" alt="B002">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">B002</div>
+      <div class="compound-name">5-Chlorobenzothiazole-2-one</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Halogenated</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/B003.svg" alt="B003">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">B003</div>
+      <div class="compound-name">5-Bromobenzothiazole-2-one</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Halogenated</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/B004.svg" alt="B004">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">B004</div>
+      <div class="compound-name">5-Trifluoromethylbenzothiazole</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Fluorinated</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/B005.svg" alt="B005">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">B005</div>
+      <div class="compound-name">N-Methylbenzothiazole-2-one</div>
+      <div class="compound-tags">
+        <span class="compound-tag">N-Alkylated</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="compound-card">
+    <div class="structure-container">
+      <img src="/assets/images/compounds/B006.svg" alt="B006">
+    </div>
+    <div class="compound-info">
+      <div class="compound-id">B006</div>
+      <div class="compound-name">Trifluoroethyl derivative</div>
+      <div class="compound-tags">
+        <span class="compound-tag">Fluorinated</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.filter-tag').forEach(tag => {
+  tag.addEventListener('click', function() {
+    document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+document.querySelector('.search-box button').addEventListener('click', function() {
+  const term = document.querySelector('.search-box input').value.toLowerCase();
+  document.querySelectorAll('.compound-card').forEach(card => {
+    const id = card.querySelector('.compound-id').textContent.toLowerCase();
+    card.style.display = (id.includes(term) || term === '') ? 'flex' : 'none';
+  });
+});
+
+document.querySelector('.search-box input').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') document.querySelector('.search-box button').click();
+});
+</script>

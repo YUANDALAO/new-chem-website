@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+from rdkit import Chem
+from rdkit.Chem import Draw, AllChem
+import os
+
+IMAGE_SIZE = (400, 400)
+OUTPUT_DIR = 'assets/images/compounds'
+
+COMPOUNDS = {
+    'A002': 'Cc1ccc(cc1)C2=NC(=CO2)c3ccccc3',
+    'A003': 'Cc1ccc(cc1)C2=NC(=CO2)c3ccccc3',
+    'A004': 'c1ccc2c(c1)oc(c2)C3=NC(=CS3)c4ccccc4',
+    'A005': 'Cc1ccc(cc1)C2=NC(=CS2)c3ccc[nH]3',
+    'B001': 'O=C1N[se]c2ccccc12',
+    'B002': 'O=C1N[Se]c2cc(Cl)ccc12',
+    'B003': 'O=C1N[Se]c2cc(Br)ccc12',
+    'B004': 'O=C1N[Se]c2cc(C(F)(F)F)ccc12',
+    'B005': 'CN1C(=O)c2ccccc2[Se]1',
+    'B006': 'O=C1N(CC(F)(F)F)[Se]c2ccccc12',
+}
+
+def generate_structure(smiles, comp_id, output_dir):
+    try:
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            print(f'❌ {comp_id}: Invalid SMILES')
+            return False
+        
+        AllChem.Compute2DCoords(mol)
+        
+        # PNG
+        png_path = os.path.join(output_dir, f'{comp_id}.png')
+        img = Draw.MolToImage(mol, size=IMAGE_SIZE, kekulize=True)
+        img.save(png_path, dpi=(300, 300))
+        
+        # SVG
+        svg_path = os.path.join(output_dir, f'{comp_id}.svg')
+        drawer = Draw.MolDraw2DSVG(IMAGE_SIZE[0], IMAGE_SIZE[1])
+        drawer.drawOptions().bondLineWidth = 1.5
+        drawer.drawOptions().atomLabelFontSize = 28
+        drawer.DrawMolecule(mol)
+        drawer.FinishDrawing()
+        svg = drawer.GetDrawingText()
+        with open(svg_path, 'w') as f:
+            f.write(svg)
+        
+        print(f'✓ {comp_id}')
+        return True
+        
+    except Exception as e:
+        print(f'❌ {comp_id}: {str(e)}')
+        return False
+
+def main():
+    print('🔬 Generating structures...\n')
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    
+    count = 0
+    for comp_id, smiles in COMPOUNDS.items():
+        if generate_structure(smiles, comp_id, OUTPUT_DIR):
+            count += 1
+    
+    print(f'\n✅ {count}/{len(COMPOUNDS)} generated')
+    print(f'📂 {OUTPUT_DIR}/')
+
+if __name__ == '__main__':
+    main()

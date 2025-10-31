@@ -1,0 +1,505 @@
+---
+layout: default
+title: Chemical Library
+permalink: /chemlib/
+---
+
+<style>
+  /* 主容器 */
+  .chem-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  /* 页面标题 */
+  .header-section {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease-in;
+  }
+
+  .header-section h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+  }
+
+  .header-section p {
+    color: #666;
+    font-size: 1.1em;
+  }
+
+  /* 搜索控制 */
+  .controls-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 1em;
+    transition: all 0.3s;
+    outline: none;
+  }
+
+  .search-box input:focus {
+    border-color: #999;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+  }
+
+  .view-toggle {
+    display: flex;
+    gap: 10px;
+  }
+
+  .view-btn {
+    padding: 10px 20px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .view-btn:hover {
+    border-color: #999;
+    background: #f8f9fa;
+  }
+
+  .view-btn.active {
+    background: #2c3e50;
+    color: white;
+    border-color: #2c3e50;
+  }
+
+  /* 分子网格 */
+  .molecule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+  }
+
+  /* 分子卡片 - 更优雅的设计 */
+  .molecule-card {
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .molecule-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    border-color: #ccc;
+  }
+
+  /* 结构容器 - 优雅的白色背景 */
+  .molecule-card .structure {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    flex-shrink: 0;
+  }
+
+  /* SVG 统一尺寸 - 更大更清晰 */
+  .molecule-card .structure svg {
+    width: 240px !important;
+    height: 240px !important;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* 精致的灰色调 - 细线条清晰版本 */
+  .molecule-card .structure svg path,
+  .molecule-card .structure svg line,
+  .molecule-card .structure svg polyline {
+    stroke: #2c3e50 !important;
+    stroke-width: 1.2 !important;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .molecule-card .structure svg ellipse,
+  .molecule-card .structure svg circle {
+    stroke: #2c3e50 !important;
+    stroke-width: 1.2 !important;
+  }
+
+  .molecule-card .structure svg text {
+    fill: #1a1a1a !important;
+    stroke: none !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    font-family: -apple-system, system-ui, sans-serif !important;
+  }
+
+  .molecule-card .structure svg rect[fill="#FFFFFF"],
+  .molecule-card .structure svg ellipse[fill="#FFFFFF"] {
+    fill: #FFFFFF !important;
+  }
+
+  /* 确保 SVG 清晰渲染 */
+  .molecule-card .structure svg {
+    shape-rendering: geometricPrecision;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* 加载动画 */
+  .loading {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 3px solid #e0e0e0;
+    border-top-color: #2c3e50;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .placeholder {
+    color: #aaa;
+    font-size: 0.9em;
+  }
+
+  /* 分子 ID - 更优雅的样式 */
+  .molecule-card .mol-id {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 1.15em;
+    margin-top: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding-top: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .molecule-card .mol-id:hover {
+    color: #2c3e50;
+    transform: scale(1.05);
+  }
+
+  /* 错误提示 */
+  .error-msg {
+    color: #e74c3c;
+    font-size: 0.85em;
+    padding: 8px 12px;
+    background: #fee;
+    border-radius: 6px;
+  }
+
+  /* 动画 */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .molecule-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    
+    .molecule-card {
+      height: 320px;
+      padding: 20px;
+    }
+    
+    .molecule-card .structure {
+      height: 210px;
+    }
+    
+    .molecule-card .structure svg {
+      width: 200px !important;
+      height: 200px !important;
+    }
+    
+    .header-section h1 {
+      font-size: 2.2em;
+    }
+  }
+
+  ::selection {
+    background: #2c3e50;
+    color: white;
+  }
+</style>
+
+<div class="chem-container">
+  <div class="header-section">
+    <h1>Chemical Library</h1>
+    <p>Explore our collection with interactive 2D structures</p>
+  </div>
+
+  <div class="controls-section">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Search by ID...">
+    </div>
+    <div class="view-toggle">
+      <button class="view-btn active" data-view="grid">Grid View</button>
+      <button class="view-btn" data-view="list">List View</button>
+    </div>
+  </div>
+
+  <div class="molecule-grid" id="moleculeGrid">
+    {% for molecule in site.data.molecules %}
+      <div class="molecule-card" data-id="{{ molecule.ID }}" style="animation-delay: {{ forloop.index | times: 0.03 }}s">
+        <div class="structure" data-smiles="{{ molecule.SMILES }}">
+          <div class="placeholder">Loading...</div>
+        </div>
+        <p class="mol-id" title="Click to copy">{{ molecule.ID }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<link rel="preload" href="https://unpkg.com/@rdkit/rdkit/Code/MinimalLib/dist/RDKit_minimal.js" as="script">
+<script src="https://unpkg.com/@rdkit/rdkit/Code/MinimalLib/dist/RDKit_minimal.js"></script>
+
+<script>
+  const CONFIG = {
+    lazyLoad: true,
+    batchSize: 12,
+    renderDelay: 80,
+    lazyMargin: '150px',
+    svgWidth: 240,
+    svgHeight: 240
+  };
+
+  let RDKitInstance = null;
+
+  // 精致的灰色调处理 - 不强制纯黑
+  function applyElegantStyle(svgElement) {
+    if (!svgElement) return;
+    
+    const allElements = svgElement.querySelectorAll('*');
+    allElements.forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+      
+      if (tagName === 'text') {
+        el.setAttribute('fill', '#1a1a1a');
+        el.setAttribute('stroke', 'none');
+        el.style.fill = '#1a1a1a';
+        el.style.stroke = 'none';
+        el.style.fontSize = '15px';
+        el.style.fontWeight = '500';
+      } else if (tagName === 'path' || tagName === 'line' || tagName === 'polyline') {
+        const currentStroke = el.getAttribute('stroke');
+        if (currentStroke && currentStroke !== 'none') {
+          el.setAttribute('stroke', '#2c3e50');
+          el.setAttribute('stroke-width', '1.2');
+          el.style.stroke = '#2c3e50';
+          el.style.strokeWidth = '1.2';
+          el.style.strokeLinecap = 'round';
+          el.style.strokeLinejoin = 'round';
+        }
+      } else if (tagName === 'ellipse' || tagName === 'circle') {
+        const currentStroke = el.getAttribute('stroke');
+        if (currentStroke && currentStroke !== 'none') {
+          el.setAttribute('stroke', '#2c3e50');
+          el.setAttribute('stroke-width', '1.2');
+          el.style.stroke = '#2c3e50';
+          el.style.strokeWidth = '1.2';
+        }
+      }
+    });
+  }
+
+  function drawMolecule(holder, RDKit) {
+    const smiles = holder.dataset.smiles;
+    if (!smiles || !smiles.trim()) return;
+
+    try {
+      const mol = RDKit.get_mol(smiles);
+      if (mol && mol.is_valid()) {
+        const svg = mol.get_svg(CONFIG.svgWidth, CONFIG.svgHeight);
+        holder.innerHTML = svg;
+        
+        const svgElement = holder.querySelector('svg');
+        if (svgElement) {
+          svgElement.setAttribute('width', CONFIG.svgWidth);
+          svgElement.setAttribute('height', CONFIG.svgHeight);
+          applyElegantStyle(svgElement);
+        }
+        
+        mol.delete();
+      } else {
+        holder.innerHTML = '<div class="error-msg">Invalid SMILES</div>';
+      }
+    } catch (e) {
+      console.error(`Error: ${smiles}`, e);
+      holder.innerHTML = '<div class="error-msg">Render Error</div>';
+    }
+  }
+
+  function setupLazyLoading(RDKit) {
+    const observerOptions = {
+      root: null,
+      rootMargin: CONFIG.lazyMargin,
+      threshold: 0.01
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const holder = entry.target.querySelector('.structure');
+          if (holder && holder.dataset.smiles && !holder.dataset.loaded) {
+            holder.innerHTML = '<div class="loading"></div>';
+            
+            setTimeout(() => {
+              drawMolecule(holder, RDKit);
+              holder.dataset.loaded = 'true';
+            }, 30);
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.molecule-card').forEach(card => {
+      observer.observe(card);
+    });
+  }
+
+  function renderBatch(molecules, startIndex, RDKit) {
+    const endIndex = Math.min(startIndex + CONFIG.batchSize, molecules.length);
+    
+    for (let i = startIndex; i < endIndex; i++) {
+      const holder = molecules[i];
+      holder.innerHTML = '<div class="loading"></div>';
+      drawMolecule(holder, RDKit);
+    }
+
+    if (endIndex < molecules.length) {
+      setTimeout(() => renderBatch(molecules, endIndex, RDKit), CONFIG.renderDelay);
+    }
+  }
+
+  function setupSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.molecule-card');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      cards.forEach(card => {
+        const id = card.dataset.id.toLowerCase();
+        card.style.display = id.includes(query) ? '' : 'none';
+      });
+    });
+  }
+
+  function setupViewToggle() {
+    const buttons = document.querySelectorAll('.view-btn');
+    const grid = document.getElementById('moleculeGrid');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const view = btn.dataset.view;
+        if (view === 'list') {
+          grid.style.gridTemplateColumns = '1fr';
+        } else {
+          grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+        }
+      });
+    });
+  }
+
+  function setupCopyId() {
+    document.querySelectorAll('.mol-id').forEach(label => {
+      label.addEventListener('click', () => {
+        const text = label.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const original = label.textContent;
+          label.textContent = '✓ Copied!';
+          setTimeout(() => label.textContent = original, 1500);
+        });
+      });
+    });
+  }
+
+  window.initRDKitModule().then((RDKit) => {
+    RDKitInstance = RDKit;
+    window.RDKit = RDKit;
+    console.log('✓ RDKit loaded');
+
+    const initPage = () => {
+      const moleculeHolders = document.querySelectorAll('.structure[data-smiles]');
+      
+      if (CONFIG.lazyLoad) {
+        setupLazyLoading(RDKit);
+      } else {
+        renderBatch(Array.from(moleculeHolders), 0, RDKit);
+      }
+      
+      setupSearch();
+      setupViewToggle();
+      setupCopyId();
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPage);
+    } else {
+      initPage();
+    }
+  }).catch((e) => {
+    console.error('✗ RDKit failed:', e);
+    const grid = document.getElementById('moleculeGrid');
+    if (grid) {
+      grid.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px;">
+          <h2 style="color: #e74c3c;">Failed to load RDKit</h2>
+          <p>Please refresh the page</p>
+        </div>
+      `;
+    }
+  });
+</script>

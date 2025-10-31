@@ -21,16 +21,16 @@
     color: #2c3540;
   }
 
-  /* 内容区域 - 为普通页面保持容器 */
+  /* 内容区域 - 添加足够的顶部空间避免被导航栏遮挡 */
   .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 40px 60px;
+    padding: 120px 40px 60px; /* 增加顶部padding从40px到120px */
   }
 
   @media (max-width: 768px) {
     .content-wrapper {
-      padding: 30px 20px 40px;
+      padding: 100px 20px 40px; /* 移动端也要留足空间 */
     }
   }
 </style>

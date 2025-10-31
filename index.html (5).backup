@@ -1,0 +1,308 @@
+---
+layout: home
+title: Zhang Laboratory - Home
+---
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #2c3540;
+    overflow-x: hidden;
+    padding-top: 0 !important; /* 重置padding */
+  }
+
+  /* 全屏区域 */
+  .section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px; /* 移除顶部的100px padding */
+  }
+
+  /* 第一屏 - 添加顶部空间以避免被导航栏遮挡 */
+  .hero {
+    background: linear-gradient(135deg, #f0f3f7 0%, #e5eaf0 100%);
+    text-align: center;
+    position: relative;
+    padding-top: 140px !important; /* 增加顶部padding为导航栏留空间 */
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .hero h1 {
+    font-size: 4em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #2c3540;
+  }
+
+  .hero p {
+    font-size: 1.25em;
+    line-height: 1.8;
+    color: #5a6471;
+    margin-bottom: 45px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 16px 45px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05em;
+    transition: all 0.3s;
+  }
+
+  .btn-primary {
+    background: #8b9cb6;
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 156, 182, 0.15);
+  }
+
+  .btn-primary:hover {
+    background: #7a8ba3;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: #8b9cb6;
+    border: 2px solid #8b9cb6;
+  }
+
+  .btn-secondary:hover {
+    background: #8b9cb6;
+    color: white;
+  }
+
+  /* 第二屏 */
+  .features {
+    background: white;
+  }
+
+  .container {
+    max-width: 1400px;
+    width: 100%;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 70px;
+    color: #2c3540;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .card {
+    text-align: center;
+    padding: 50px 30px;
+    background: #f8f9fb;
+    border-radius: 20px;
+    transition: all 0.4s;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    background: white;
+    box-shadow: 0 15px 40px rgba(139, 156, 182, 0.12);
+  }
+
+  .icon {
+    font-size: 4em;
+    margin-bottom: 25px;
+  }
+
+  .card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #2c3540;
+  }
+
+  .card p {
+    color: #5a6471;
+    line-height: 1.7;
+  }
+
+  /* 第三屏 */
+  .publications {
+    background: linear-gradient(135deg, #f7f8fa 0%, #ebeef2 100%);
+  }
+
+  .pub-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(139, 156, 182, 0.08);
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+  }
+
+  .pub-card:hover {
+    border-left-color: #8b9cb6;
+    transform: translateX(5px);
+  }
+
+  .pub-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #2c3540;
+  }
+
+  .pub-meta {
+    color: #7f8994;
+    margin-bottom: 18px;
+  }
+
+  .pub-abstract {
+    color: #5a6471;
+    line-height: 1.7;
+  }
+
+  .center {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  /* 响应式 */
+  @media (max-width: 1200px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5em;
+    }
+
+    .hero {
+      padding-top: 120px !important;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .buttons {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .section {
+      padding: 40px 20px;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<!-- 第一屏 -->
+<section class="section hero">
+  <div class="hero-content">
+    <h1>Welcome to Zhang Laboratory</h1>
+    <p>
+      The Laboratory is dedicated to the innovation of novel reaction methodologies. 
+      We seek to discover molecular structure and reactivity that can contribute to 
+      interdisciplinary solutions for challenges in human health.
+    </p>
+    <div class="buttons">
+      <a href="/research/" class="btn btn-primary">Our Research</a>
+      <a href="/chemlib/" class="btn btn-secondary">Chemical Library</a>
+    </div>
+  </div>
+</section>
+
+<!-- 第二屏 -->
+<section class="section features">
+  <div class="container">
+    <h2 class="title">Research Focus</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🔬</div>
+        <h3>Novel Synthesis</h3>
+        <p>Developing cutting-edge synthetic routes for complex drug-like molecules</p>
+      </div>
+      
+      <div class="card">
+        <div class="icon">💊</div>
+        <h3>Drug Discovery</h3>
+        <p>Rational design and optimization of bioactive compounds</p>
+      </div>
+      
+      <div class="card">
+        <div class="icon">🧬</div>
+        <h3>Medicinal Chemistry</h3>
+        <p>Structure-activity relationship studies and lead optimization</p>
+      </div>
+      
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Computational Tools</h3>
+        <p>Machine learning and molecular modeling for optimization</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第三屏 -->
+<section class="section publications">
+  <div class="container">
+    <h2 class="title">Recent Publications</h2>
+    
+    <div class="pub-card">
+      <div class="pub-title">
+        Asymmetric Diamination of the In Situ Generated Difluoroenol Species Using Azocarboxamides as an N Source
+      </div>
+      <div class="pub-meta">
+        ACS Catalysis • 2025 • Impact Factor: 13.1
+      </div>
+      <div class="pub-abstract">
+        ...
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-title">
+        Practical and modular cycloadditions of in-situ-formed exocyclic vinylcarbenes
+      </div>
+      <div class="pub-meta">
+        Chem Catal. • 2025 • Impact Factor: 11.59
+      </div>
+      <div class="pub-abstract">
+        ...
+      </div>
+    </div>
+
+    <div class="center">
+      <a href="/publications/" class="btn btn-primary">View All Publications</a>
+    </div>
+  </div>
+</section>

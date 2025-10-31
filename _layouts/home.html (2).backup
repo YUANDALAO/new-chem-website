@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  {% include head.html %}
+  <body style="padding-top: 90px;">
+    {{ content }}
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    padding-top: 80px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #2c3540;
+  }
+</style>
