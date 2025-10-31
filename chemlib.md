@@ -157,7 +157,7 @@ permalink: /chemlib/
     {% for molecule in site.data.molecules %}
       <div class="molecule-card" data-id="{{ molecule.ID }}">
         <div class="structure">
-          <img src="{{ site.baseurl }}/assets/images/compounds/{{ molecule.ID }}.svg" 
+          <img loading="lazy" src="{{ site.baseurl }}/assets/images/compounds/{{ molecule.ID }}.svg" 
                alt="{{ molecule.ID }}"
                loading="lazy">
         </div>

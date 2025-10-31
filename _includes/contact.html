@@ -1,20 +1,14 @@
-<div class="row g-5 mb-5">
+<div class="row g-5 mb-5" style="padding-top: 80px;"> <!-- 增加顶部内边距，数值可根据实际情况调整 -->
   <div>
     {% for contact in site.data.settings.contact %}
     <div class="row g-5 mb-5 align-items-center">
-      <div class="col-md-8">
+      <!-- 移除图片列，将内容列调整为全宽响应式布局 -->
+      <div class="col-12 col-md-10 mx-auto"> <!-- 使用mx-auto居中，md以上10列保持留白 -->
         <h4>{{ contact.name }}</h4>
         <p>{{ contact.title }}</p>
         <p>Research and Scholarly Interests: {{ contact.Research_and_Scholarly_Interests }}</p>
         <p>Email: {{ contact.email }}</p>
         <p>Office: {{ contact.office_location }}</p>
-      </div>
-      <div class="col-md-4 d-flex justify-content-center">
-        <!-- 移除比例容器，保持图片原始比例 -->
-        <img src="{{ site.github.url }}/{{ contact.image }}" 
-             alt="{{ contact.name }}" 
-             class="rounded shadow-sm img-fluid"
-             style="max-width: 280px; height: auto;">
       </div>
     </div>
     {% endfor %}
