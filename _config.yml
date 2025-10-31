@@ -33,3 +33,9 @@ exclude:
 
 # 启用增量构建
 incremental: true
+
+
+# Tell Jekyll to process the _research folder as a collection
+collections:
+  research:
+    output: true

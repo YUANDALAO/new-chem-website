@@ -2,13 +2,13 @@ menu:
 - {name: 'Research', url: '/research'}
 - {name: 'Publications', url: '/publications'}
 - {name: 'People', url: '/people'}
-- {name: 'ChemLib', url: '/chemLib'}
+- {name: 'ChemLib', url: '/chemlib'}
 - {name: 'Contact', url: '/contact'}
 
 research:
 - {name: 'Organic Synthesis',url: 'Organic Synthesis'}
 - {name: 'Flavivirus Inhibitors',url: 'Flavivirus Inhibitors'}
-- {name: 'AI Deployment for Drug Discovery',url: 'AI Deployment for Drug Discovery'}
+- {name: 'AI for Drug Discovery',url: 'ai'}
 
 publications:
 - {name: 'Microbiology', url: 'vector-calculus'}
@@ -31,7 +31,7 @@ people:
 - {name: 'Dr. Yuan Chen', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Chen.jpg', url: 'dr-yuan-chen'}
 
 ChemLib:
-
+- {name: 'Chemical Library',url: 'ChemLib'}
 
 contact:
 - {name: 'Cheng Zhang', title: 'Junior Professor', Research_and_Scholarly_Interests: 'Organic Chemistry, Medicinal Chemistry', email: 'chengzhang@gzhmu.edu.cn', office_location: 'Technology Building Room 828, Xinzao, Panyu District, Guangzhou, 511436', image: 'assets/img/PI3.jpg'}

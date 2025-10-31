@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Research - GenDD
-permalink: /research/gendd/
+permalink: /research/ai/gendd/
 ---
 
 <style>

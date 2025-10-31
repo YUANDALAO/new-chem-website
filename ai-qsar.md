@@ -1,0 +1,223 @@
+---
+layout: default
+title: Research - QSAR Modeling
+permalink: /research/ai/qsar/
+---
+<!-- GenDD项目区块 - 可以直接插入到research.md中 -->
+
+<style>
+  .gendd-section {
+    margin: 60px 0;
+    padding: 50px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 30%);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gendd-section::before {
+    content: '🧬';
+    position: absolute;
+    font-size: 15em;
+    opacity: 0.05;
+    right: -50px;
+    top: -50px;
+    transform: rotate(-15deg);
+  }
+
+  .gendd-header {
+    position: relative;
+    z-index: 1;
+  }
+
+  .gendd-title {
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1e3c72;
+    margin-bottom: 10px;
+  }
+
+  .gendd-subtitle {
+    font-size: 1.3em;
+    color: #2a5298;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+
+  .gendd-description {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gendd-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gendd-feature {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+  }
+
+  .gendd-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(30, 60, 114, 0.15);
+  }
+
+  .gendd-feature h4 {
+    color: #1e3c72;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .gendd-feature p {
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .gendd-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gendd-stat {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .gendd-stat-number {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #1e3c72;
+    display: block;
+  }
+
+  .gendd-stat-label {
+    color: #555;
+    font-size: 1em;
+    margin-top: 5px;
+  }
+
+  .gendd-cta {
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gendd-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #1e3c72;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+  }
+
+  .gendd-btn:hover {
+    background: #2a5298;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(30, 60, 114, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    .gendd-section {
+      padding: 30px 20px;
+    }
+    .gendd-title {
+      font-size: 2em;
+    }
+    .gendd-features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="gendd-section">
+  <div class="gendd-header">
+    <h2 class="gendd-title">GenDD</h2>
+    <p class="gendd-subtitle">Generative Drug Design Platform</p>
+  </div>
+
+  <div class="gendd-description">
+    <strong>GenDD</strong> is our flagship AI-driven drug discovery platform that combines 
+    deep learning, molecular modeling, and high-throughput virtual screening to accelerate 
+    the identification of novel therapeutic candidates. Using transformer-based generative models 
+    and reinforcement learning, we explore vast chemical spaces to design molecules with 
+    optimized drug-like properties, synthetic accessibility, and target selectivity.
+  </div>
+
+  <!-- 核心特性 -->
+  <div class="gendd-features">
+    <div class="gendd-feature">
+      <h4>🤖 AI Generation</h4>
+      <p>Deep learning models trained on millions of molecules to generate novel drug candidates</p>
+    </div>
+
+    <div class="gendd-feature">
+      <h4>🎯 Multi-Target Optimization</h4>
+      <p>Simultaneous optimization of potency, selectivity, ADMET, and synthetic feasibility</p>
+    </div>
+
+    <div class="gendd-feature">
+      <h4>⚡ Rapid Screening</h4>
+      <p>100x faster than traditional HTS with higher success rates and lower costs</p>
+    </div>
+
+    <div class="gendd-feature">
+      <h4>🧪 Experimental Integration</h4>
+      <p>Active learning loop with wet-lab validation to continuously improve predictions</p>
+    </div>
+  </div>
+
+  <!-- 统计数据 -->
+  <div class="gendd-stats">
+    <div class="gendd-stat">
+      <span class="gendd-stat-number">10M+</span>
+      <span class="gendd-stat-label">Molecules Generated</span>
+    </div>
+    <div class="gendd-stat">
+      <span class="gendd-stat-number">95%</span>
+      <span class="gendd-stat-label">Drug-likeness</span>
+    </div>
+    <div class="gendd-stat">
+      <span class="gendd-stat-number">50+</span>
+      <span class="gendd-stat-label">Lead Compounds</span>
+    </div>
+  </div>
+
+  <!-- 应用领域 -->
+  <div class="gendd-description" style="margin-top: 30px;">
+    <strong>Therapeutic Focus:</strong> Oncology (kinase inhibitors, PROTACs), 
+    Neurodegenerative Diseases (BBB-penetrant molecules), Infectious Diseases 
+    (novel antibiotics), and Rare Diseases (precision medicine).
+  </div>
+
+  <!-- CTA按钮 -->
+  <div class="gendd-cta">
+    <a href="/research/AI/" class="gendd-btn">Learn More →</a>
+  </div>
+</div>
