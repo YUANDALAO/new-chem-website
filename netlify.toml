@@ -1,0 +1,16 @@
+# netlify.toml
+[[redirects]]
+  from = "/research"
+  to = "/research.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+或者创建 `_redirects` 文件（放在项目根目录）：
+```
+/research  /research.html  200
+/*         /index.html     200
