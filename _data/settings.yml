@@ -31,7 +31,6 @@ people:
 - {name: 'Dr. Yuan Chen', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Chen.jpg', url: 'dr-yuan-chen'}
 
 ChemLib:
-- {name: 'Cheng Zhang', title: 'Principal Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI2.jpg', url: 'ChemLib'}
 
 
 contact:
