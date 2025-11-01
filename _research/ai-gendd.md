@@ -262,12 +262,12 @@ permalink: /research/ai/gendd/
       <span class="stat-label">Drug-likeness Score</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">50+</span>
+      <span class="stat-number">1000+</span>
       <span class="stat-label">Lead Compounds</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">3</span>
-      <span class="stat-label">Clinical Candidates</span>
+      <span class="stat-number">100+</span>
+      <span class="stat-label">Candidate Molecules in Pipeline</span>
     </div>
   </div>
 

@@ -10,7 +10,7 @@ title: Research - AI for Drug Discovery
   .subsection-card p { font-size: 0.95em; line-height: 1.5; margin-bottom: 0; }
 </style>
 <div class="container" style="padding: 2rem 0;">
-    <h1>AI for Drug Discovery</h1>
+    <h1>AI-Powered Drug Discovery</h1>
     <hr>
     <p style="font-size: 1.1em; line-height: 1.6;">
       We are pioneering the integration of artificial intelligence and machine learning with traditional medicinal chemistry. This interdisciplinary approach aims to accelerate the entire drug discovery pipeline. Explore our key research areas in AI below:
@@ -21,12 +21,12 @@ title: Research - AI for Drug Discovery
         <p>Our in-house platform for generative de novo molecular design and property prediction.</p>
       </a>
       <a href="{{ '/research/ai/qsar/' | relative_url }}" class="subsection-card">
-        <h4>QSAR Modeling</h4>
+        <h4>QSAR Predictive Modeling</h4>
         <p>Developing predictive models for Quantitative Structure-Activity Relationships.</p>
       </a>
-      <a href="{{ '/research/ai/aidd/' | relative_url }}" class="subsection-card">
-        <h4>Structure-Based AIDD</h4>
-        <p>Utilizing protein structures for AI-driven drug design, including docking and simulation.</p>
+      <a href="{{ '/research/ai/synthia/' | relative_url }}" class="subsection-card">
+        <h4>AI for Synthetic Methodology</h4>
+        <p>Developing AI models to optimize chemical synthesis routes and predict reaction outcomes.</p>
       </a>
       <a href="{{ '/research/ai/alphafold3/' | relative_url }}" class="subsection-card">
         <h4>AlphaFold3 Applications</h4>
@@ -35,6 +35,30 @@ title: Research - AI for Drug Discovery
       <a href="{{ '/research/ai/rfdiffusion/' | relative_url }}" class="subsection-card">
         <h4>RFdiffusion for Proteins</h4>
         <p>Designing novel protein binders and enzymes using generative diffusion models.</p>
+      </a>
+      <a href="{{ '/research/ai/aidd/' | relative_url }}" class="subsection-card">
+        <h4>Structure-Based AIDD</h4>
+        <p>Utilizing protein structures for AI-driven drug design, including docking and simulation.</p>
+      </a>
+      <a href="{{ '/research/ai/admet/' | relative_url }}" class="subsection-card">
+        <h4>ADMET Prediction</h4>
+        <p>Advanced models for predicting Absorption, Distribution, Metabolism, Excretion and Toxicity profiles.</p>
+      </a>
+      <a href="{{ '/research/ai/multiomics/' | relative_url }}" class="subsection-card">
+        <h4>Multi-Omics Integration</h4>
+        <p>Combining genomic, transcriptomic, and proteomic data to identify disease-specific drug targets.</p>
+      </a>
+      <a href="{{ '/research/ai/clinical-trial/' | relative_url }}" class="subsection-card">
+        <h4>Clinical Trial Optimization</h4>
+        <p>AI models to predict patient recruitment, trial outcomes, and adverse event likelihood.</p>
+      </a>
+      <a href="{{ '/research/ai/knowledge-graphs/' | relative_url }}" class="subsection-card">
+        <h4>Biomedical Knowledge Graphs</h4>
+        <p>Constructing semantic networks to uncover hidden relationships between drugs, targets and diseases.</p>
+      </a>
+      <a href="{{ '/research/ai/real-world-evidence/' | relative_url }}" class="subsection-card">
+        <h4>Real-World Evidence Analysis</h4>
+        <p>Leveraging AI to extract drug efficacy insights from heterogeneous real-world healthcare data.</p>
       </a>
     </div>
 </div>
