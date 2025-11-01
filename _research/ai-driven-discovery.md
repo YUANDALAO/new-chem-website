@@ -8,6 +8,37 @@ title: Research - AI for Drug Discovery
   .subsection-card:hover { transform: translateY(-5px); box-shadow: 0 8px 12px rgba(0,0,0,0.1); border-color: #3498db; }
   .subsection-card h4 { margin-top: 0; color: #2c3e50; }
   .subsection-card p { font-size: 0.95em; line-height: 1.5; margin-bottom: 0; }
+/* 假设导航栏类名为 .navbar，根据实际情况修改 */
+.navbar {
+  /* 固定导航栏时，需明确高度以便计算下方内容偏移 */
+  height: 60px; /* 根据实际导航栏高度调整 */
+  position: fixed; /* 或 sticky，取决于原导航栏实现 */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* 确保导航栏在最上层 */
+}
+
+/* 为内容容器添加顶部间距，避开导航栏 */
+.container {
+  /* 间距值 >= 导航栏高度，避免遮挡 */
+  padding-top: 80px !important; /* 覆盖原有 2rem 并增加，根据导航栏高度调整 */
+}
+
+/* 移动端适配：针对小屏幕进一步调整 */
+@media (max-width: 768px) {
+  .navbar {
+    height: 80px; /* 移动端导航栏可能更高（如换行），需调整 */
+  }
+  .container {
+    padding-top: 100px !important; /* 适配移动端导航栏高度 */
+  }
+  .subsection-grid {
+    /* 可选：减小移动端网格间距，避免内容过挤 */
+    gap: 1rem;
+    padding: 0 1rem; /* 增加左右内边距，避免内容贴边 */
+  }
+}
 </style>
 <div class="container" style="padding: 2rem 0;">
     <h1>AI-Powered Drug Discovery</h1>
