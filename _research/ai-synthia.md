@@ -248,6 +248,12 @@ permalink: /research/ai/synthia/
   }
 
   @media (max-width: 768px) {
+    .synthia-hero {
+    /* 调整负边距，避免向上偏移过多 */
+    margin: -20px -20px 40px -20px;
+    /* 如果导航栏有固定高度（例如60px），添加对应补偿 */
+    padding-top: 80px; /* 导航栏高度 + 额外间距 */
+  }
     .synthia-hero h1 {
       font-size: 2.5em;
     }

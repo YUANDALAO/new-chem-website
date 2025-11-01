@@ -222,12 +222,23 @@ permalink: /research/ai/alphafold3/
   }
 
   @media (max-width: 768px) {
+      .af3-hero {
+    /* 移除负上边距，或根据导航栏高度调整 */
+    margin: 0 -40px 60px -40px;
+    /* 为顶部导航栏预留空间，根据实际导航栏高度调整 */
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
     .af3-hero h1 {
       font-size: 2.5em;
     }
     .features-grid {
       grid-template-columns: 1fr;
     }
+      body {
+    /* 根据导航栏实际高度调整 */
+    padding-top: 80px;
+  }
   }
 </style>
 

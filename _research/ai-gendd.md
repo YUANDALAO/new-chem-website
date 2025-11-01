@@ -222,6 +222,12 @@ permalink: /research/ai/gendd/
   }
 
   @media (max-width: 768px) {
+    .gendd-hero {
+    /* 减小或移除负边距，为导航栏留出空间 */
+    margin: 0 -20px 40px -20px;
+    padding-top: 100px; /* 根据导航栏高度调整，确保内容不被遮挡 */
+    padding-bottom: 60px;
+  }
     .gendd-hero h1 {
       font-size: 2.5em;
     }
