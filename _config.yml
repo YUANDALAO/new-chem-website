@@ -1,6 +1,6 @@
-url: "https://zhangchem.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://synfinder.com" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-title: "Zhang Laboratory" # the name of your site, e.g. ACME Corp.
+title: "Center for Drug Discovery" # the name of your site, e.g. ACME Corp.
 description: "Organic Synthesis for Drug Discovery"
 avatar: "/images/zhangcheng_photo.jpg" 
 email: "chengzhang@gzhmu.edu.cn"
