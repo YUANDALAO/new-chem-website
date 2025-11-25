@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zhang Laboratory - Home</title>
+  <title>Center for Drug Discovery - Home</title>
   <style>
     * {
       margin: 0;
@@ -28,6 +28,12 @@
       border-bottom: 1px solid rgba(139, 156, 182, 0.1);
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      padding: 12px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .header-content {
@@ -37,6 +43,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: padding 0.3s ease;
+    }
+
+    .header.scrolled .header-content {
+      padding: 12px 40px;
     }
 
     .logo {
@@ -44,13 +55,14 @@
       font-weight: 700;
       color: #2c3540;
       text-decoration: none;
+      display: flex;
+      flex-direction: column;
     }
 
     .logo-subtitle {
       font-size: 0.65em;
       font-weight: 400;
       color: #7f8994;
-      display: block;
     }
 
     .nav {
@@ -63,10 +75,37 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
+      position: relative;
+      padding: 8px 0;
     }
 
     .nav a:hover {
       color: #8b9cb6;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #8b9cb6;
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* 移动端菜单按钮 */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      color: #2c3540;
+      cursor: pointer;
     }
 
     /* 全屏区域 */
@@ -76,6 +115,14 @@
       align-items: center;
       justify-content: center;
       padding: 100px 40px 60px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* 第一屏 */
@@ -87,6 +134,8 @@
 
     .hero-content {
       max-width: 900px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
@@ -94,6 +143,7 @@
       font-weight: 700;
       margin-bottom: 30px;
       color: #2c3540;
+      line-height: 1.2;
     }
 
     .hero p {
@@ -116,6 +166,8 @@
       font-weight: 600;
       font-size: 1.05em;
       transition: all 0.3s;
+      display: inline-block;
+      text-align: center;
     }
 
     .btn-primary {
@@ -127,6 +179,7 @@
     .btn-primary:hover {
       background: #7a8ba3;
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 156, 182, 0.25);
     }
 
     .btn-secondary {
@@ -138,6 +191,7 @@
     .btn-secondary:hover {
       background: #8b9cb6;
       color: white;
+      transform: translateY(-2px);
     }
 
     /* 第二屏 */
@@ -156,6 +210,20 @@
       font-weight: 700;
       margin-bottom: 70px;
       color: #2c3540;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #8b9cb6;
+      margin: 15px auto 0;
+      border-radius: 2px;
     }
 
     .grid {
@@ -170,6 +238,24 @@
       background: #f8f9fb;
       border-radius: 20px;
       transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: #8b9cb6;
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
     }
 
     .card:hover {
@@ -181,6 +267,12 @@
     .icon {
       font-size: 4em;
       margin-bottom: 25px;
+      color: #8b9cb6;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .icon {
+      transform: scale(1.1);
     }
 
     .card h3 {
@@ -212,6 +304,7 @@
     .pub-card:hover {
       border-left-color: #8b9cb6;
       transform: translateX(5px);
+      box-shadow: 0 6px 25px rgba(139, 156, 182, 0.15);
     }
 
     .pub-title {
@@ -219,11 +312,17 @@
       font-weight: 600;
       margin-bottom: 12px;
       color: #2c3540;
+      transition: color 0.3s;
+    }
+
+    .pub-card:hover .pub-title {
+      color: #8b9cb6;
     }
 
     .pub-meta {
       color: #7f8994;
       margin-bottom: 18px;
+      font-size: 0.95em;
     }
 
     .pub-abstract {
@@ -245,14 +344,34 @@
 
     @media (max-width: 768px) {
       .header-content {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        justify-content: space-between;
         padding: 15px 20px;
       }
 
       .nav {
-        gap: 15px;
-        font-size: 0.9em;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+      }
+
+      .nav.active {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #f0f3f7;
+      }
+
+      .menu-toggle {
+        display: block;
       }
 
       .hero h1 {
@@ -265,6 +384,7 @@
 
       .buttons {
         flex-direction: column;
+        align-items: center;
       }
 
       .btn {
@@ -283,9 +403,10 @@
   <header class="header">
     <div class="header-content">
       <a href="/" class="logo">
-        Zhang Laboratory
-        <span class="logo-subtitle">Organic Synthesis for Drug Discovery</span>
+        Center for Drug Discovery
+        <span class="logo-subtitle">Guangzhou Medical University, School of Pharmaceutical Sciences</span>
       </a>
+      <button class="menu-toggle">☰</button>
       <nav class="nav">
         <a href="/research/">Research</a>
         <a href="/publications/">Publications</a>
@@ -299,46 +420,44 @@
   <!-- 第一屏 -->
   <section class="section hero">
     <div class="hero-content">
-      <h1></h1>
+      <h1>Innovating Therapeutics to Accelerate Drug Discovery</h1>
       <p>
-        The laboratory is dedicated to the innovation of novel reaction methodologies. 
-        We seek to discover molecular structure and reactivity that can contribute to 
-        interdisciplinary solutions for challenges in human health.
+        The center pioneers innovative drug discovery approaches by integrating synthetic chemistry, computational modeling, and translational research. It is committed to developing breakthrough therapeutics for unmet medical needs through interdisciplinary collaboration.
       </p>
       <div class="buttons">
-        <a href="/research/" class="btn btn-primary">Our Research</a>
-        <a href="/chemlib/" class="btn btn-secondary">Chemical Library</a>
+        <a href="/research/" class="btn btn-primary">Explore Research</a>
+        <a href="/chemlib/" class="btn btn-secondary">Browse Chemical Library</a>
       </div>
     </div>
   </section>
 
-  <!-- 第二屏 -->
+  <!-- 第二屏"Research Focus"部分 -->
   <section class="section features">
     <div class="container">
       <h2 class="title">Research Focus</h2>
       <div class="grid">
         <div class="card">
+          <div class="icon">🦠</div>
+          <h3>Antiviral & Antibacterial Agents</h3>
+          <p>Development of novel therapeutics targeting viral and bacterial infections with improved resistance profiles and broad-spectrum activity</p>
+        </div>
+        
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>Anticancer Therapies</h3>
+          <p>Discovery of small molecule inhibitors for cancer-specific targets, focusing on precision medicine and combination therapy strategies</p>
+        </div>
+        
+        <div class="card">
           <div class="icon">🔬</div>
-          <h3>Novel Synthesis</h3>
-          <p>Developing cutting-edge synthetic routes for complex drug-like molecules</p>
-        </div>
-        
-        <div class="card">
-          <div class="icon">💊</div>
-          <h3>Drug Discovery</h3>
-          <p>Rational design and optimization of bioactive compounds</p>
-        </div>
-        
-        <div class="card">
-          <div class="icon">🧬</div>
-          <h3>Medicinal Chemistry</h3>
-          <p>Structure-activity relationship studies and lead optimization</p>
+          <h3>Small Molecule Drug Design</h3>
+          <p>Rational design and optimization of bioactive small molecules with enhanced pharmacokinetic properties and target specificity</p>
         </div>
         
         <div class="card">
           <div class="icon">🤖</div>
-          <h3>Computational Tools</h3>
-          <p>Machine learning and molecular modeling for optimization</p>
+          <h3>AI-Assisted Discovery</h3>
+          <p>Artificial intelligence platforms for virtual screening, lead optimization, and predicting biological activity of potential drug candidates</p>
         </div>
       </div>
     </div>
@@ -351,25 +470,25 @@
       
       <div class="pub-card">
         <div class="pub-title">
-          Asymmetric Diamination of the In Situ Generated Difluoroenol Species Using Azocarboxamides as an N Source
+          Asymmetric Diamination of In Situ Generated Difluoroenol Species Using Azocarboxamides as Nitrogen Source
         </div>
         <div class="pub-meta">
           Xiongda Xie, Xinke Zhang, Gang Chen, Minghan Yao, Cheng Zhang*, Yue Pan*, Xinfang Xu* • ACS Catalysis • 2025  
         </div>
         <div class="pub-abstract">
-          ...
+          This study reports a novel asymmetric diamination strategy for difluoroenol species using azocarboxamides as a versatile nitrogen source. The methodology provides efficient access to chiral difluorinated vicinal diamines with high enantioselectivity, offering valuable building blocks for pharmaceutical development.
         </div>
       </div>
 
       <div class="pub-card">
         <div class="pub-title">
-          Practical and modular cycloadditions of in-situ-formed exocyclic vinylcarbenes
+          Practical and Modular Cycloadditions of In-Situ-Formed Exocyclic Vinylcarbenes
         </div>
         <div class="pub-meta">
-          C. Zhang,* S. Dong, M. C. Dietl, M. Rudolph, X. Zhang, K. Hong, W. Yi, A. S. K. Hashmi,* X. Xu* • Chem Catal. • 2025 
+          C. Zhang,* S. Dong, M. C. Dietl, M. Rudolph, X. Zhang, K. Hong, W. Yi, A. S. K. Hashmi,* X. Xu* • Chem Catalysis • 2025 
         </div>
         <div class="pub-abstract">
-          ...
+          A practical approach to cycloaddition reactions using in-situ-generated exocyclic vinylcarbenes is described. This modular strategy enables the construction of complex heterocyclic scaffolds with high regio- and stereoselectivity, providing a powerful tool for diversity-oriented synthesis in drug discovery.
         </div>
       </div>
 
@@ -378,5 +497,52 @@
       </div>
     </div>
   </section>
+
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // 移动端菜单切换
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+    
+    menuToggle.addEventListener('click', function() {
+      nav.classList.toggle('active');
+    });
+
+    // 滚动动画
+    const sections = document.querySelectorAll('.section');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // 初始触发第一屏动画
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.hero').classList.add('visible');
+    });
+  </script>
 </body>
 </html>
