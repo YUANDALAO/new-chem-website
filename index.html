@@ -17,6 +17,12 @@
       overflow-x: hidden;
     }
 
+    /* 全局移除超链接下划线 */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     /* 固定导航栏 */
     .header {
       position: fixed;
@@ -81,21 +87,6 @@
 
     .nav a:hover {
       color: #8b9cb6;
-    }
-
-    .nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #8b9cb6;
-      transition: width 0.3s ease;
-    }
-
-    .nav a:hover::after {
-      width: 100%;
     }
 
     /* 移动端菜单按钮 */
@@ -202,6 +193,7 @@
     .container {
       max-width: 1400px;
       width: 100%;
+      margin: 0 auto;
     }
 
     .title {
@@ -226,9 +218,36 @@
       border-radius: 2px;
     }
 
+    .research-section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h3 {
+      font-size: 1.8em;
+      font-weight: 600;
+      color: #2c3540;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h3::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #8b9cb6;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 40px;
     }
 
@@ -240,6 +259,7 @@
       transition: all 0.4s;
       position: relative;
       overflow: hidden;
+      color: inherit;
     }
 
     .card::before {
@@ -284,6 +304,7 @@
     .card p {
       color: #5a6471;
       line-height: 1.7;
+      font-size: 1em;
     }
 
     /* 第三屏 */
@@ -340,6 +361,10 @@
       .grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .hero h1 {
+        font-size: 3.5em;
+      }
     }
 
     @media (max-width: 768px) {
@@ -391,6 +416,14 @@
         width: 100%;
         max-width: 300px;
       }
+      
+      .title {
+        font-size: 2.2em;
+      }
+      
+      .section-header h3 {
+        font-size: 1.5em;
+      }
     }
 
     html {
@@ -420,7 +453,7 @@
   <!-- 第一屏 -->
   <section class="section hero">
     <div class="hero-content">
-      <h1>Innovating Therapeutics to Accelerate Drug Discovery</h1>
+      <h1>Innovating Therapeutics for Tomorrow's Medicine</h1>
       <p>
         The center pioneers innovative drug discovery approaches by integrating synthetic chemistry, computational modeling, and translational research. It is committed to developing breakthrough therapeutics for unmet medical needs through interdisciplinary collaboration.
       </p>
@@ -434,30 +467,57 @@
   <!-- 第二屏"Research Focus"部分 -->
   <section class="section features">
     <div class="container">
-      <h2 class="title">Research Focus</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="icon">🦠</div>
-          <h3>Antiviral & Antibacterial Agents</h3>
-          <p>Development of novel therapeutics targeting viral and bacterial infections with improved resistance profiles and broad-spectrum activity</p>
+      <h2 class="title">Assay Development & Applications</h2>
+      
+      <!-- Chemical Assays Section -->
+      <div class="research-section">
+        <div class="section-header">
+          <h3>Chemical Assays</h3>
         </div>
-        
-        <div class="card">
-          <div class="icon">🎯</div>
-          <h3>Anticancer Therapies</h3>
-          <p>Discovery of small molecule inhibitors for cancer-specific targets, focusing on precision medicine and combination therapy strategies</p>
+        <div class="grid">
+          <a href="/research/chemical-assays/enzymatic/" class="card">
+            <div class="icon">🧪</div>
+            <h3>Enzymatic Activity Assays</h3>
+            <p>Development of high-throughput chemical assays to measure enzyme kinetics, inhibition constants, and substrate specificity for drug target validation.</p>
+          </a>
+          
+          <a href="/research/chemical-assays/binding/" class="card">
+            <div class="icon">🔗</div>
+            <h3>Molecular Binding Assays</h3>
+            <p>Design of fluorescence-based and SPR-based chemical assays to quantify biomolecular interactions between small molecules and target proteins.</p>
+          </a>
+          
+          <a href="/research/chemical-assays/metabolite/" class="card">
+            <div class="icon">📊</div>
+            <h3>Metabolite Detection Assays</h3>
+            <p>Development of LC-MS/MS based chemical assays for sensitive quantification of endogenous metabolites in biological samples.</p>
+          </a>
         </div>
-        
-        <div class="card">
-          <div class="icon">🔬</div>
-          <h3>Small Molecule Drug Design</h3>
-          <p>Rational design and optimization of bioactive small molecules with enhanced pharmacokinetic properties and target specificity</p>
+      </div>
+      
+      <!-- Cellular Assays Section -->
+      <div class="research-section">
+        <div class="section-header">
+          <h3>Cellular Assays</h3>
         </div>
-        
-        <div class="card">
-          <div class="icon">🤖</div>
-          <h3>AI-Assisted Discovery</h3>
-          <p>Artificial intelligence platforms for virtual screening, lead optimization, and predicting biological activity of potential drug candidates</p>
+        <div class="grid">
+          <a href="/research/cell-assays/cytotoxicity/" class="card">
+            <div class="icon">🔬</div>
+            <h3>Cytotoxicity & Viability Assays</h3>
+            <p>Optimization of cell-based assays to evaluate compound toxicity, including MTT, LDH release, and live/dead staining protocols.</p>
+          </a>
+          
+          <a href="/research/cell-assays/signaling/" class="card">
+            <div class="icon">📡</div>
+            <h3>Cell Signaling Assays</h3>
+            <p>Development of reporter gene and phosphorylation-based cell assays to study pathway modulation by small molecule compounds.</p>
+          </a>
+          
+          <a href="/research/cell-assays/imaging/" class="card">
+            <div class="icon">🖼️</div>
+            <h3>High-Content Imaging Assays</h3>
+            <p>Integration of automated microscopy and image analysis for cell-based phenotypic screening and subcellular localization studies.</p>
+          </a>
         </div>
       </div>
     </div>
@@ -470,25 +530,25 @@
       
       <div class="pub-card">
         <div class="pub-title">
-          Asymmetric Diamination of In Situ Generated Difluoroenol Species Using Azocarboxamides as Nitrogen Source
+          <a href="/publications/#pub1">Asymmetric Diamination of In Situ Generated Difluoroenol Species Using Azocarboxamides as Nitrogen Source</a>
         </div>
         <div class="pub-meta">
           Xiongda Xie, Xinke Zhang, Gang Chen, Minghan Yao, Cheng Zhang*, Yue Pan*, Xinfang Xu* • ACS Catalysis • 2025  
         </div>
         <div class="pub-abstract">
-          This study reports a novel asymmetric diamination strategy for difluoroenol species using azocarboxamides as a versatile nitrogen source. The methodology provides efficient access to chiral difluorinated vicinal diamines with high enantioselectivity, offering valuable building blocks for pharmaceutical development.
+          This study reports a novel asymmetric diamination strategy for difluoroenol species using azocarboxamides as the nitrogen source, providing efficient access to chiral difluorinated vicinal diamines with high enantioselectivity.
         </div>
       </div>
 
       <div class="pub-card">
         <div class="pub-title">
-          Practical and Modular Cycloadditions of In-Situ-Formed Exocyclic Vinylcarbenes
+          <a href="/publications/#pub2">Practical and Modular Cycloadditions of In-Situ-Formed Exocyclic Vinylcarbenes</a>
         </div>
         <div class="pub-meta">
           C. Zhang,* S. Dong, M. C. Dietl, M. Rudolph, X. Zhang, K. Hong, W. Yi, A. S. K. Hashmi,* X. Xu* • Chem Catalysis • 2025 
         </div>
         <div class="pub-abstract">
-          A practical approach to cycloaddition reactions using in-situ-generated exocyclic vinylcarbenes is described. This modular strategy enables the construction of complex heterocyclic scaffolds with high regio- and stereoselectivity, providing a powerful tool for diversity-oriented synthesis in drug discovery.
+          A practical and modular approach to various cyclic compounds through cycloaddition reactions of in-situ-formed exocyclic vinylcarbenes is described, featuring broad substrate scope and operational simplicity.
         </div>
       </div>
 
