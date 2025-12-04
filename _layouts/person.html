@@ -1,0 +1,146 @@
+---
+layout: default
+---
+
+<div class="person-detail-container">
+  <div class="person-detail-header">
+    <div class="person-detail-photo">
+      <img src="{{ page.image }}" alt="{{ page.name }}">
+    </div>
+    <div class="person-detail-info">
+      <h1>{{ page.name }}</h1>
+      <p class="person-detail-title">{{ page.title }}</p>
+      {% if page.email %}
+      <p class="person-detail-email">
+        <a href="mailto:{{ page.email }}">📧 {{ page.email }}</a>
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="person-detail-content">
+    {{ content }}
+  </div>
+  
+  <div class="person-detail-back">
+    <a href="/people">← 返回团队页面</a>
+  </div>
+</div>
+
+<style>
+.person-detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.person-detail-header {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e67e22;
+}
+
+.person-detail-photo {
+  flex-shrink: 0;
+}
+
+.person-detail-photo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.person-detail-info h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.person-detail-title {
+  font-size: 1.2rem;
+  color: #e67e22;
+  margin-bottom: 15px;
+}
+
+.person-detail-email a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.person-detail-email a:hover {
+  text-decoration: underline;
+}
+
+.person-detail-content {
+  line-height: 1.8;
+  color: #444;
+}
+
+.person-detail-content h2 {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 30px 0 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.person-detail-content ul {
+  margin-left: 20px;
+}
+
+.person-detail-content li {
+  margin-bottom: 8px;
+}
+
+.person-detail-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+.person-detail-content th,
+.person-detail-content td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.person-detail-content th {
+  background: #f9f9f9;
+  font-weight: 600;
+}
+
+.person-detail-back {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.person-detail-back a {
+  color: #e67e22;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.person-detail-back a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .person-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .person-detail-photo img {
+    width: 150px;
+    height: 150px;
+  }
+}
+</style>
