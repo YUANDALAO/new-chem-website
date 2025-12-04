@@ -4,778 +4,84 @@ layout: default
 
 {{ content }}
 
-<!-- 导师介绍 -->
-<div class="section-header">
-  <h2>导师介绍</h2>
-</div>
-
 <div class="people-container">
   <div class="people-row">
-    <!-- 易伟 -->
-    <div class="person-item" data-index="0">
+    {% for person in site.data.settings.Team %}
+    <div class="person-item" data-index="{{ forloop.index0 }}">
       <div class="text-center">
+        <!-- 图片容器 - 保持所有图片区域大小一致 -->
         <div class="person-image-container">
-          <img src="/assets/img/people/yiwei.png" alt="易伟" class="person-image">
+          <!-- 确保图片按比例缩放并填充容器 -->
+          <img src="{{ site.github.url }}{{ person.image }}" alt="{{ person.name }}" 
+               class="person-image">
         </div>
-        <h5 class="person-name">易伟</h5>
-        <p class="person-title">教授，博导</p>
-        <p class="person-more"><a href="/people/yi-wei">More info</a></p>
+        <h5 class="person-name">{{ person.name }}</h5>
+        <p class="person-title">{{ person.title}}</p>
+        <p class="person-more"><a href="{{ site.github.url }}/people/{{ person.url }}">More info</a></p>
       </div>
     </div>
-    <!-- 周志 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/zhouzhi.jpg" alt="周志" class="person-image">
-        </div>
-        <h5 class="person-name">周志</h5>
-        <p class="person-title">副教授，硕导</p>
-        <p class="person-more"><a href="/people/zhou-zhi">More info</a></p>
-      </div>
-    </div>
-    <!-- 王胜东 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/wangshengdong.jpg" alt="王胜东" class="person-image">
-        </div>
-        <h5 class="person-name">王胜东</h5>
-        <p class="person-title">教授，硕导</p>
-        <p class="person-more"><a href="/people/wang-shengdong">More info</a></p>
-      </div>
-    </div>
-    <!-- 曾中一 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/zengzhongyi.png" alt="曾中一" class="person-image">
-        </div>
-        <h5 class="person-name">曾中一</h5>
-        <p class="person-title">教授，硕导</p>
-        <p class="person-more"><a href="/people/zeng-zhongyi">More info</a></p>
-      </div>
-    </div>
-    <!-- 张成 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/zhangcheng.jpg" alt="张成" class="person-image">
-        </div>
-        <h5 class="person-name">张成</h5>
-        <p class="person-title">教授，硕导</p>
-        <p class="person-more"><a href="/people/zhang-cheng">More info</a></p>
-      </div>
-    </div>
-    <!-- 徐有伟 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/xuyouwei.png" alt="徐有伟" class="person-image">
-        </div>
-        <h5 class="person-name">徐有伟</h5>
-        <p class="person-title">副研究员，硕导</p>
-        <p class="person-more"><a href="/people/xu-youwei">More info</a></p>
-      </div>
-    </div>
-    <!-- 刘夏雯 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/liuxiawen.jpg" alt="刘夏雯" class="person-image">
-        </div>
-        <h5 class="person-name">刘夏雯</h5>
-        <p class="person-title">副教授，硕导</p>
-        <p class="person-more"><a href="/people/liu-xiawen">More info</a></p>
-      </div>
-    </div>
-    <!-- 黄珺珺 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/huangjunjun.jpg" alt="黄珺珺" class="person-image">
-        </div>
-        <h5 class="person-name">黄珺珺</h5>
-        <p class="person-title">教授，硕导</p>
-        <p class="person-more"><a href="/people/huang-junjun">More info</a></p>
-      </div>
-    </div>
-    <!-- 吴文浩 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/wuwenhao.jpg" alt="吴文浩" class="person-image">
-        </div>
-        <h5 class="person-name">吴文浩</h5>
-        <p class="person-title">副教授，硕导</p>
-        <p class="person-more"><a href="/people/wu-wenhao">More info</a></p>
-      </div>
-    </div>
-    <!-- 赵鑫 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/zhaoxin.jpg" alt="赵鑫" class="person-image">
-        </div>
-        <h5 class="person-name">赵鑫</h5>
-        <p class="person-title">副教授，硕导</p>
-        <p class="person-more"><a href="/people/zhao-xin">More info</a></p>
-      </div>
-    </div>
-    <!-- 廖思燕 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/liaosiyan.png" alt="廖思燕" class="person-image">
-        </div>
-        <h5 class="person-name">廖思燕</h5>
-        <p class="person-title">副教授，硕导</p>
-        <p class="person-more"><a href="/people/liao-siyan">More info</a></p>
-      </div>
-    </div>
-    <!-- 黄玉刚 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container">
-          <img src="/assets/img/people/huangyugang.jpg" alt="黄玉刚" class="person-image">
-        </div>
-        <h5 class="person-name">黄玉刚</h5>
-        <p class="person-title">教授，硕导</p>
-        <p class="person-more"><a href="/people/huang-yugang">More info</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 当前组员 -->
-<div class="section-header">
-  <h2>当前组员</h2>
-</div>
-
-<!-- 博士后 -->
-<div class="subsection-header">
-  <h3>博士后</h3>
-</div>
-
-<div class="people-container">
-  <div class="people-row">
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/malei.jpg" alt="马磊" class="person-image"></div>
-        <h5 class="person-name">马磊</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/chenfangyuan.png" alt="陈方园"
-            class="person-image"></div>
-        <h5 class="person-name">陈方园</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/chenweijie.jpg" alt="陈卫杰" class="person-image">
-        </div>
-        <h5 class="person-name">陈卫杰</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liufuxiaomin.png" alt="刘付晓敏"
-            class="person-image"></div>
-        <h5 class="person-name">刘付晓敏</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/wangmei.png" alt="王梅" class="person-image">
-        </div>
-        <h5 class="person-name">王梅</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zamanmanzoor.jpg" alt="Zaman Manzoor"
-            class="person-image"></div>
-        <h5 class="person-name">Zaman Manzoor</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/jianghong.jpg" alt="姜红" class="person-image">
-        </div>
-        <h5 class="person-name">姜红</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/luguangsheng.png" alt="卢广生"
-            class="person-image"></div>
-        <h5 class="person-name">卢广生</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/tangjunyuan.jpg" alt="唐君源"
-            class="person-image"></div>
-        <h5 class="person-name">唐君源</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/wangkezhi.png" alt="王科智" class="person-image">
-        </div>
-        <h5 class="person-name">王科智</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/quliye.png" alt="屈礼叶" class="person-image">
-        </div>
-        <h5 class="person-name">屈礼叶</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/wuyunxiang.jpg" alt="吴云翔" class="person-image">
-        </div>
-        <h5 class="person-name">吴云翔</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/wumin.jpg" alt="吴敏" class="person-image"></div>
-        <h5 class="person-name">吴敏</h5>
-        <p class="person-title">博士后</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 科研助理 -->
-<div class="subsection-header">
-  <h3>科研助理</h3>
-</div>
-
-<div class="people-container">
-  <div class="people-row">
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zengru.png" alt="曾茹" class="person-image">
-        </div>
-        <h5 class="person-name">曾茹</h5>
-        <p class="person-title">科研助理</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/luojiayu.jpg" alt="罗佳彧" class="person-image">
-        </div>
-        <h5 class="person-name">罗佳彧</h5>
-        <p class="person-title">科研助理</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/weiwei.png" alt="魏巍" class="person-image">
-        </div>
-        <h5 class="person-name">魏巍</h5>
-        <p class="person-title">科研助理</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/shouqingguo.png" alt="首清国"
-            class="person-image"></div>
-        <h5 class="person-name">首清国</h5>
-        <p class="person-title">科研助理</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 博士研究生 -->
-<div class="subsection-header">
-  <h3>博士研究生</h3>
-</div>
-
-<div class="people-container">
-  <div class="people-row">
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liuqingmei.jpg" alt="刘青妹" class="person-image">
-        </div>
-        <h5 class="person-name">刘青妹</h5>
-        <p class="person-title">2023级博士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zhangsilin.jpg" alt="张思琳" class="person-image">
-        </div>
-        <h5 class="person-name">张思琳</h5>
-        <p class="person-title">2025级博士研究生</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 硕士研究生 -->
-<div class="subsection-header">
-  <h3>硕士研究生</h3>
-</div>
-
-<div class="people-container">
-  <div class="people-row">
-    <!-- 2022级 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liuxuehui.jpg" alt="刘雪辉" class="person-image">
-        </div>
-        <h5 class="person-name">刘雪辉</h5>
-        <p class="person-title">2022级硕士研究生</p>
-      </div>
-    </div>
-    <!-- 2023级 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liyang.jpg" alt="李阳" class="person-image">
-        </div>
-        <h5 class="person-name">李阳</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zhuxinyuan.jpg" alt="祝鑫源" class="person-image">
-        </div>
-        <h5 class="person-name">祝鑫源</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liusuixia.jpg" alt="刘穗霞" class="person-image">
-        </div>
-        <h5 class="person-name">刘穗霞</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/huangping.jpg" alt="黄萍" class="person-image">
-        </div>
-        <h5 class="person-name">黄萍</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/huangjianlian.jpg" alt="黄建连"
-            class="person-image"></div>
-        <h5 class="person-name">黄建连</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/gaoshiyu.jpg" alt="高诗雨" class="person-image">
-        </div>
-        <h5 class="person-name">高诗雨</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/yangmingkai.png" alt="阳名铠"
-            class="person-image"></div>
-        <h5 class="person-name">阳名铠</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/lilinzai.jpg" alt="李林宰" class="person-image">
-        </div>
-        <h5 class="person-name">李林宰</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liujiayi.jpg" alt="刘佳宜" class="person-image">
-        </div>
-        <h5 class="person-name">刘佳宜</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liangmiao.jpg" alt="梁妙" class="person-image">
-        </div>
-        <h5 class="person-name">梁妙</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/duanruxia.jpg" alt="段汝霞" class="person-image">
-        </div>
-        <h5 class="person-name">段汝霞</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zhengjunyuan.jpg" alt="郑俊源"
-            class="person-image"></div>
-        <h5 class="person-name">郑俊源</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/chenzhijin.jpg" alt="陈峙锦" class="person-image">
-        </div>
-        <h5 class="person-name">陈峙锦</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liumianni.jpg" alt="刘勉妮" class="person-image">
-        </div>
-        <h5 class="person-name">刘勉妮</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/huangbaohua.jpg" alt="黄宝华"
-            class="person-image"></div>
-        <h5 class="person-name">黄宝华</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zhanshiping.jpg" alt="占世平"
-            class="person-image"></div>
-        <h5 class="person-name">占世平</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zhangtianwan.jpg" alt="张天万"
-            class="person-image"></div>
-        <h5 class="person-name">张天万</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/lisuifei.jpg" alt="李穗菲" class="person-image">
-        </div>
-        <h5 class="person-name">李穗菲</h5>
-        <p class="person-title">2023级硕士研究生</p>
-      </div>
-    </div>
-    <!-- 2024级 -->
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/helincan.jpg" alt="何林灿" class="person-image">
-        </div>
-        <h5 class="person-name">何林灿</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/yancuishi.jpg" alt="颜翠诗" class="person-image">
-        </div>
-        <h5 class="person-name">颜翠诗</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/gaoxinyu.png" alt="高昕宇" class="person-image">
-        </div>
-        <h5 class="person-name">高昕宇</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liqixin.png" alt="李启鑫" class="person-image">
-        </div>
-        <h5 class="person-name">李启鑫</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/wuxinhong.png" alt="吴心红" class="person-image">
-        </div>
-        <h5 class="person-name">吴心红</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/qiudan.png" alt="丘丹" class="person-image">
-        </div>
-        <h5 class="person-name">丘丹</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/wangchuitain.png" alt="王垂添"
-            class="person-image"></div>
-        <h5 class="person-name">王垂添</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/liujie.png" alt="刘杰" class="person-image">
-        </div>
-        <h5 class="person-name">刘杰</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/xieqinxie.png" alt="谢勤勰" class="person-image">
-        </div>
-        <h5 class="person-name">谢勤勰</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/zoupei.png" alt="邹沛" class="person-image">
-        </div>
-        <h5 class="person-name">邹沛</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/dongmenghan.png" alt="董梦涵"
-            class="person-image"></div>
-        <h5 class="person-name">董梦涵</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/xiangyu.png" alt="向玉" class="person-image">
-        </div>
-        <h5 class="person-name">向玉</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-    <div class="person-item">
-      <div class="text-center">
-        <div class="person-image-container"><img src="/assets/img/people/huangjiayin.jpg" alt="黄嘉茵"
-            class="person-image"></div>
-        <h5 class="person-name">黄嘉茵</h5>
-        <p class="person-title">2024级硕士研究生</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 往届组员 -->
-<div class="section-header">
-  <h2>往届组员</h2>
-</div>
-
-<div class="alumni-container">
-  <div class="alumni-list">
-    <span class="alumni-item">李浩然 <small>(2022-2025)</small></span>
-    <span class="alumni-item">钟玉婷 <small>(2017-2025)</small></span>
-    <span class="alumni-item">钱佩佩 <small>(2022-2025)</small></span>
-    <span class="alumni-item">李辰偲 <small>(2022-2025)</small></span>
-    <span class="alumni-item">杨青青 <small>(2022-2025)</small></span>
-    <span class="alumni-item">练玉峨 <small>(2022-2025)</small></span>
-    <span class="alumni-item">陈雪兵 <small>(2022-2025)</small></span>
-    <span class="alumni-item">许燕宾 <small>(2022-2025)</small></span>
-    <span class="alumni-item">郑秀芬 <small>(2022-2025)</small></span>
-    <span class="alumni-item">蔡莹 <small>(2022-2025)</small></span>
-    <span class="alumni-item">宋庆伟 <small>(2021-2024)</small></span>
-    <span class="alumni-item">彭志欢 <small>(2021-2024)</small></span>
-    <span class="alumni-item">陈梓楷 <small>(2021-2024)</small></span>
-    <span class="alumni-item">钟秀华 <small>(2020-2023)</small></span>
-    <span class="alumni-item">王婷 <small>(2020-2023)</small></span>
-    <span class="alumni-item">陈锴丰 <small>(2020-2023)</small></span>
-    <span class="alumni-item">王铱 <small>(2020-2023)</small></span>
-    <span class="alumni-item">吴烈鑫 <small>(2018-2022)</small></span>
-    <span class="alumni-item">林爽 <small>(2019-2022)</small></span>
-    <span class="alumni-item">张海漫 <small>(2019-2022)</small></span>
-    <span class="alumni-item">韦银慧 <small>(2019-2022)</small></span>
-    <span class="alumni-item">张凯欣 <small>(2018-2021)</small></span>
-    <span class="alumni-item">卞孟瑶 <small>(2018-2021)</small></span>
-    <span class="alumni-item">李丽萍 <small>(2018-2021)</small></span>
-    <span class="alumni-item">孙铭 <small>(2018-2021)</small></span>
-    <span class="alumni-item">杨健 <small>(2018-2021)</small></span>
-    <span class="alumni-item">石文娣 <small>(2017-2020)</small></span>
+    {% endfor %}
   </div>
 </div>
 
 <style>
-  /* 保持原有synfinder样式 */
+.people-row {
+  display: flex;
+  flex-wrap: wrap;
+  --image-width: 200px; /* 先统一图片宽度 */
+  --gap-size: calc(var(--image-width) / 4); /* 间距 = 图片宽度的1/4 */
+  --person-width: var(--image-width); /* 人员项宽度 = 图片宽度 */
+  gap: var(--gap-size); /* 使用计算出的间距 */
+  justify-content: center; /* 居中对齐，增强整齐感 */
+  padding: 0 calc(var(--gap-size) / 2);
+  margin: 0 auto; /* 容器居中 */
+  max-width: calc(100% - var(--gap-size)); /* 限制最大宽度 */
+}
+
+.person-item {
+  flex: 0 0 var(--person-width); /* 使用统一宽度 */
+  box-sizing: border-box;
+  padding: 15px;
+  text-align: center; /* 文字居中 */
+}
+
+.person-image-container {
+  width: var(--image-width); /* 使用统一宽度 */
+  height: var(--image-width); /* 正方形容器 */
+  margin: 0 auto 10px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 统一图片样式 */
+.person-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* 保持图片比例，完整显示 */
+}
+
+/* 响应式调整 - 保持相同的比例关系 */
+@media (max-width: 1200px) {
   .people-row {
-    display: flex;
-    flex-wrap: wrap;
-    --image-width: 200px;
-    --gap-size: calc(var(--image-width) / 4);
-    --person-width: var(--image-width);
-    gap: var(--gap-size);
-    justify-content: center;
-    padding: 0 calc(var(--gap-size) / 2);
-    margin: 0 auto;
-    max-width: calc(100% - var(--gap-size));
+    --image-width: 180px; /* 适当缩小图片 */
   }
+}
 
-  .person-item {
-    flex: 0 0 var(--person-width);
-    box-sizing: border-box;
-    padding: 15px;
-    text-align: center;
+@media (max-width: 768px) {
+  .people-row {
+    --image-width: 160px;
   }
+}
 
-  .person-image-container {
-    width: var(--image-width);
-    height: var(--image-width);
-    margin: 0 auto 10px;
-    overflow: hidden;
-    border-radius: 50%;
-    /* 圆形 */
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 576px) {
+  .people-row {
+    --image-width: 280px; /* 移动端适当放大 */
+    --gap-size: 20px; /* 移动端间距固定值更合适 */
   }
-
-  .person-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* 填充并裁剪 */
-  }
-
-  .person-name {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
-  }
-
-  .person-title {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-  }
-
-  .person-more a {
-    color: #e67e22;
-    text-decoration: none;
-    font-size: 13px;
-  }
-
-  .person-more a:hover {
-    text-decoration: underline;
-  }
-
-  /* 分区标题样式 */
-  .section-header {
-    margin: 50px 0 30px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #e67e22;
-  }
-
-  .section-header h2 {
-    font-size: 24px;
-    color: #333;
-    margin: 0;
-  }
-
-  .subsection-header {
-    margin: 30px 0 20px;
-    padding-left: 15px;
-    border-left: 4px solid #3498db;
-  }
-
-  .subsection-header h3 {
-    font-size: 18px;
-    color: #555;
-    margin: 0;
-  }
-
-  /* 往届组员样式 */
-  .alumni-container {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 25px;
-    margin-top: 20px;
-  }
-
-  .alumni-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .alumni-item {
-    background: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #333;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-
-  .alumni-item small {
-    color: #888;
-    font-size: 12px;
-  }
-
-  /* 响应式 */
-  @media (max-width: 1200px) {
-    .people-row {
-      --image-width: 180px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .people-row {
-      --image-width: 160px;
-    }
-
-    .section-header h2 {
-      font-size: 20px;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .people-row {
-      --image-width: 280px;
-      --gap-size: 20px;
-    }
-  }
+}
 </style>

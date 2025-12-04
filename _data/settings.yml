@@ -6,32 +6,85 @@ menu:
 - {name: 'Contact', url: '/contact'}
 
 Assay:
-- {name: 'Organic Synthesis',url: 'Organic Synthesis'}
-- {name: 'Flavivirus Inhibitors',url: 'Flavivirus Inhibitors'}
-- {name: 'AI for Drug Discovery',url: 'ai'}
+- {name: 'Organic Synthesis', url: 'Organic-Synthesis'}
+- {name: 'Flavivirus Inhibitors', url: 'Flavivirus-Inhibitors'}
+- {name: 'AI for Drug Discovery', url: 'ai'}
 
-publications:
+ChemLib:
+- {name: 'Chemical Library', url: 'chemLib'}
+
+
+Team:
+- {name: 'Yi Wei', title: 'Professor, Doctoral Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/yiwei.png', url: 'yi-wei'}
+- {name: 'Zhou Zhi', title: 'Associate Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhouzhi.jpg', url: 'zhou-zhi'}
+- {name: 'Wang Shengdong', title: 'Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wangshengdong.jpg', url: 'wang-shengdong'}
+- {name: 'Zeng Zhongyi', title: 'Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zengzhongyi.png', url: 'zeng-zhongyi'}
+- {name: 'Zhang Cheng', title: 'Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhangcheng.jpg', url: 'zhang-cheng'}
+- {name: 'Xu Youwei', title: 'Associate Researcher, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/xuyouwei.png', url: 'xu-youwei'}
+- {name: 'Liu Xiawen', title: 'Associate Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liuxiawen.jpg', url: 'liu-xiawen'}
+- {name: 'Huang Junjun', title: 'Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/huangjunjun.jpg', url: 'huang-junjun'}
+- {name: 'Wu Wenhao', title: 'Associate Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wuwenhao.jpg', url: 'wu-wenhao'}
+- {name: 'Zhao Xin', title: 'Associate Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhaoxin.jpg', url: 'zhao-xin'}
+- {name: 'Liao Siyan', title: 'Associate Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liaosiyan.png', url: 'liao-siyan'}
+- {name: 'Huang Yugang', title: 'Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/huangyugang.jpg', url: 'huang-yugang'}
+- {name: 'Ma Lei', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/malei.jpg', url: ''}
+- {name: 'Chen Fangyuan', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/chenfangyuan.png', url: ''}
+- {name: 'Chen Weijie', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/chenweijie.jpg', url: ''}
+- {name: 'Liu Fuxiaomin', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liufuxiaomin.png', url: ''}
+- {name: 'Wang Mei', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wangmei.png', url: ''}
+- {name: 'Zaman Manzoor', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zamanmanzoor.jpg', url: ''}
+- {name: 'Jiang Hong', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/jianghong.jpg', url: ''}
+- {name: 'Lu Guangsheng', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/luguangsheng.png', url: ''}
+- {name: 'Tang Junyuan', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/tangjunyuan.jpg', url: ''}
+- {name: 'Wang Kezhi', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wangkezhi.png', url: ''}
+- {name: 'Qu Liye', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/quliye.png', url: ''}
+- {name: 'Wu Yunxiang', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wuyunxiang.jpg', url: ''}
+- {name: 'Wu Min', title: 'Postdoctoral Fellow', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wumin.jpg', url: ''}
+- {name: 'Zeng Ru', title: 'Research Assistant', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zengru.png', url: ''}
+- {name: 'Luo Jiayu', title: 'Research Assistant', department: '', institution: '', email: '', office: '', image: '/assets/img/people/luojiayu.jpg', url: ''}
+- {name: 'Wei Wei', title: 'Research Assistant', department: '', institution: '', email: '', office: '', image: '/assets/img/people/weiwei.png', url: ''}
+- {name: 'Shou Qingguo', title: 'Research Assistant', department: '', institution: '', email: '', office: '', image: '/assets/img/people/shouqingguo.png', url: ''}
+- {name: 'Liu Qingmei', title: '2023 PhD Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liuqingmei.jpg', url: ''}
+- {name: 'Zhang Silin', title: '2025 PhD Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhangsilin.jpg', url: ''}
+- {name: 'Liu Xuehui', title: '2022 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liuxuehui.jpg', url: ''}
+- {name: 'Li Yang', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liyang.jpg', url: ''}
+- {name: 'Zhu Xinyuan', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhuxinyuan.jpg', url: ''}
+- {name: 'Liu Suixia', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liusuixia.jpg', url: ''}
+- {name: 'Huang Ping', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/huangping.jpg', url: ''}
+- {name: 'Huang Jianlian', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/huangjianlian.jpg', url: ''}
+- {name: 'Gao Shiyu', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/gaoshiyu.jpg', url: ''}
+- {name: 'Yang Mingkai', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/yangmingkai.png', url: ''}
+- {name: 'Li Linzai', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/lilinzai.jpg', url: ''}
+- {name: 'Liu Jiayi', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liujiayi.jpg', url: ''}
+- {name: 'Liang Miao', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liangmiao.jpg', url: ''}
+- {name: 'Duan Ruxia', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/duanruxia.jpg', url: ''}
+- {name: 'Zheng Junyuan', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhengjunyuan.jpg', url: ''}
+- {name: 'Chen Zhijin', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/chenzhijin.jpg', url: ''}
+- {name: 'Liu Mianni', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liumianni.jpg', url: ''}
+- {name: 'Huang Baohua', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/huangbaohua.jpg', url: ''}
+- {name: 'Zhan Shiping', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhanshiping.jpg', url: ''}
+- {name: 'Zhang Tianwan', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhangtianwan.jpg', url: ''}
+- {name: 'Li Suifei', title: '2023 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/lisuifei.jpg', url: ''}
+- {name: 'He Lincan', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/helincan.jpg', url: ''}
+- {name: 'Yan Cuishi', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/yancuishi.jpg', url: ''}
+- {name: 'Gao Xinyu', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/gaoxinyu.png', url: ''}
+- {name: 'Li Qixin', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liqixin.png', url: ''}
+- {name: 'Wu Xinhong', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wuxinhong.png', url: ''}
+- {name: 'Qiu Dan', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/qiudan.png', url: ''}
+- {name: 'Wang Chuitian', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/wangchuitain.png', url: ''}
+- {name: 'Liu Jie', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/liujie.png', url: ''}
+- {name: 'Xie Qinxie', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/xieqinxie.png', url: ''}
+- {name: 'Zou Pei', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zoupei.png', url: ''}
+- {name: 'Dong Menghan', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/dongmenghan.png', url: ''}
+- {name: 'Xiang Yu', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/xiangyu.png', url: ''}
+- {name: 'Huang Jiayin', title: '2024 Master\'s Student', department: '', institution: '', email: '', office: '', image: '/assets/img/people/huangjiayin.jpg', url: ''}
+
+
+Publications:
 - {name: 'Microbiology', url: 'vector-calculus'}
 - {name: 'Organic Chemistry', url: 'quantum-mechanics'}
 - {name: 'Pharmacal Chemistry', url: 'stellar-structures'}
 
-Team:
-- {name: 'Dr. Cheng Zhang', title: 'Principal Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI3.jpg', url: 'dr-cheng-zhang'}
-- {name: 'Dr. Guangsheng Lu', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Lu.jpg', url: 'dr-guangsheng-lu'}
-- {name: 'Dr. Liye Qu', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Qu.jpg', url: 'dr-liye-qu'}
-- {name: 'Dr. Yunxiang Wu', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Wu.jpg', url: 'dr-yunxiang-wu'}
-- {name: 'Ru Zeng', title: 'Research Assistant', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Zeng.jpg', url: 'ru-zeng'}
-- {name: 'Jiajie Liang', title: 'Research Assistant', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Liang.jpg', url: 'jiajie-liang'}
-- {name: 'Qingguo Shou', title: 'Research Assistant', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Shou.jpg', url: 'qingguo-shou'}
-- {name: 'Minghan Yao', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Yao.png', url: 'minghan-yao'}
-- {name: 'Menghan Dong', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Dong.jpg', url: 'menghan-dong'}
-- {name: 'Pei Zou', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Zou.jpg', url: 'pei-zou'}
-- {name: 'Junheng Wang', title: 'Graduate Student', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/wang junheng.jpg', url: 'junheng-wang'}
-- {name: 'Yuli Liu', title: 'Lab Chelf', department: 'Pharmacy', institution: 'Jialidun University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/graduate-student.jpg', url: 'yuli-liu'}
-- {name: 'Dr. Yuan Chen', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Chen.jpg', url: 'dr-yuan-chen'}
-
-ChemLib:
-- {name: 'Chemical Library',url: 'ChemLib'}
 
 contact:
-- {name: 'Cheng Zhang', title: 'Junior Professor', Research_and_Scholarly_Interests: 'Organic Chemistry, Medicinal Chemistry', email: 'chengzhang@gzhmu.edu.cn', office_location: 'Technology Building Room 828, Xinzao, Panyu District, Guangzhou, 511436', image: 'assets/img/PI3.jpg'}
+- {name: 'Cheng Zhang', title: 'Associate Professor', Research_and_Scholarly_Interests: 'Organic Chemistry, Medicinal Chemistry', email: 'chengzhang@gzhmu.edu.cn', office_location: 'Technology Building Room 828, Xinzao, Panyu District, Guangzhou, 511436', image: '/assets/img/people/zhangcheng.jpg'}
