@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 黄玉刚
+person_name: 黄玉刚
 title: 教授，硕导
 image: /assets/img/people/huangyugang.jpg
 email: huangyugang@gzhmu.edu.cn

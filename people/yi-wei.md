@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 易伟
+person_name: 易伟
 title: 教授，博导
 image: /assets/img/people/yiwei.png
 email: yiwei@gzhmu.edu.cn

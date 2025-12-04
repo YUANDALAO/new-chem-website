@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 黄珺珺
+person_name: 黄珺珺
 title: 教授，硕导
 image: /assets/img/people/huangjunjun.jpg
 email: huangjunjun@gzhmu.edu.cn

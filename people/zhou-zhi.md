@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 周志
+person_name: 周志
 title: 副教授，硕导
 image: /assets/img/people/zhouzhi.jpg
 email: zhouzhi@gzhmu.edu.cn

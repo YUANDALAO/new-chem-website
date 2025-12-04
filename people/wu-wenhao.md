@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 吴文浩
+person_name: 吴文浩
 title: 副教授，硕导
 image: /assets/img/people/wuwenhao.jpg
 email: wuwenhao@gzhmu.edu.cn

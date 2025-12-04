@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 王胜东
+person_name: 王胜东
 title: 教授，硕导
 image: /assets/img/people/wangshengdong.jpg
 email: wangshengdong@gzhmu.edu.cn

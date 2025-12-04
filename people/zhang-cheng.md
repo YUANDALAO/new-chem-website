@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 张成
+person_name: 张成
 title: 教授，硕导
 image: /assets/img/people/zhangcheng.jpg
 email: zhangcheng@gzhmu.edu.cn

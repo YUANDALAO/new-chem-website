@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 曾中一
+person_name: 曾中一
 title: 教授，硕导
 image: /assets/img/people/zengzhongyi.png
 email: zengzhongyi@gzhmu.edu.cn

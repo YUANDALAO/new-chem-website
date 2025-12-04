@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 赵鑫
+person_name: 赵鑫
 title: 副教授，硕导
 image: /assets/img/people/zhaoxin.jpg
 email: zhaoxin@gzhmu.edu.cn

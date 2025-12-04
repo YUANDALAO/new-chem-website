@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 徐有伟
+person_name: 徐有伟
 title: 副研究员，硕导
 image: /assets/img/people/xuyouwei.png
 email: （可补充邮箱信息）

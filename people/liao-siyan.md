@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 廖思燕
+person_name: 廖思燕
 title: 副教授，硕导
 image: /assets/img/people/liaosiyan.png
 email: liaosiyan@gzhmu.edu.cn

@@ -1,6 +1,6 @@
 ---
 layout: person
-name: 刘夏雯
+person_name: 刘夏雯
 title: 副教授，硕导
 image: /assets/img/people/liuxiawen.jpg
 email: liuxiawen@gzhmu.edu.cn

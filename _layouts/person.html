@@ -5,10 +5,10 @@ layout: default
 <div class="person-detail-container">
   <div class="person-detail-header">
     <div class="person-detail-photo">
-      <img src="{{ page.image }}" alt="{{ page.name }}">
+      <img src="{{ page.image }}" alt="{{ page.person_name }}">
     </div>
     <div class="person-detail-info">
-      <h1>{{ page.name }}</h1>
+      <h1>{{ page.person_name }}</h1>
       <p class="person-detail-title">{{ page.title }}</p>
       {% if page.email %}
       <p class="person-detail-email">
