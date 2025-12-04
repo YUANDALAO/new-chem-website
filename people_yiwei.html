@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组员介绍 - Yi_wei课题组</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            margin: 30px 0 20px 0;
+        }
+        
+        /* 导师介绍样式 */
+        .mentor-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        .mentor-image {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .mentor-info h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .mentor-info .title {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .mentor-info .bio {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* 组员卡片样式 */
+        .people-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .people-row {
+            display: flex;
+            flex-wrap: wrap;
+            --image-width: 180px;
+            --gap-size: calc(var(--image-width) / 4);
+            --person-width: var(--image-width);
+            gap: var(--gap-size);
+            justify-content: center;
+            padding: 0 calc(var(--gap-size) / 2);
+            margin: 0 auto;
+        }
+        
+        .person-item {
+            flex: 0 0 var(--person-width);
+            box-sizing: border-box;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .person-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .person-image-container {
+            width: var(--image-width);
+            height: var(--image-width);
+            margin: 0 auto 10px;
+            overflow: hidden;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .person-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .person-name {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0 5px 0;
+        }
+        
+        .person-title {
+            font-size: 0.9em;
+            color: #888;
+            margin: 0;
+        }
+        
+        .person-period {
+            font-size: 0.85em;
+            color: #667eea;
+            margin-top: 5px;
+        }
+        
+        .person-more a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: color 0.3s;
+        }
+        
+        .person-more a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .people-row {
+                --image-width: 160px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mentor-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .people-row {
+                --image-width: 140px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .people-row {
+                --image-width: 120px;
+                --gap-size: 15px;
+            }
+        }
+        
+        /* 往届组员样式 */
+        .alumni-section {
+            background: #fafafa;
+        }
+        
+        .alumni-section .person-image-container {
+            background-color: #e8e8e8;
+            opacity: 0.9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        /* 标签页切换 */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .tab-btn {
+            padding: 10px 25px;
+            border: none;
+            background: #e0e0e0;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background: #d0d0d0;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* 占位符图片样式 */
+        .placeholder-avatar {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>组员介绍</h1>
+        <p>Yi_wei 课题组</p>
+    </header>
+    
+    <div class="container">
+        <!-- 导师介绍 -->
+        <h2 class="section-title">导师介绍</h2>
+        <div class="mentor-card">
+            <img src="https://via.placeholder.com/200x250/667eea/ffffff?text=导师" alt="导师照片" class="mentor-image">
+            <div class="mentor-info">
+                <h2>易伟 教授</h2>
+                <p class="title">博士生导师</p>
+                <p class="bio">
+                    课题组负责人。主要研究方向包括：[请在此处添加研究方向描述]。
+                    <br><br>
+                    教育背景和工作经历：[请在此处添加详细信息]
+                    <br><br>
+                    联系方式：[请添加联系方式]
+                </p>
+            </div>
+        </div>
+        
+        <!-- 标签页切换 -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('current')">当前组员</button>
+            <button class="tab-btn" onclick="showTab('alumni')">往届组员</button>
+        </div>
+        
+        <!-- 当前组员 -->
+        <div id="current" class="tab-content active">
+            <div class="people-container">
+                <div class="people-row">
+                    <!-- 李浩然 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">李</div>
+                        </div>
+                        <h5 class="person-name">李浩然</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 钟玉婷 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">钟</div>
+                        </div>
+                        <h5 class="person-name">钟玉婷</h5>
+                        <p class="person-title">博士研究生</p>
+                        <p class="person-period">2017-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 钱佩佩 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">钱</div>
+                        </div>
+                        <h5 class="person-name">钱佩佩</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 李辰偲 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">李</div>
+                        </div>
+                        <h5 class="person-name">李辰偲</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 杨青青 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">杨</div>
+                        </div>
+                        <h5 class="person-name">杨青青</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 练玉峨 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">练</div>
+                        </div>
+                        <h5 class="person-name">练玉峨</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 陈雪兵 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">陈</div>
+                        </div>
+                        <h5 class="person-name">陈雪兵</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 许燕宾 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">许</div>
+                        </div>
+                        <h5 class="person-name">许燕宾</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 郑秀芬 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">郑</div>
+                        </div>
+                        <h5 class="person-name">郑秀芬</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 蔡莹 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">蔡</div>
+                        </div>
+                        <h5 class="person-name">蔡莹</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 林心悦 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">林</div>
+                        </div>
+                        <h5 class="person-name">林心悦</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 覃时 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">覃</div>
+                        </div>
+                        <h5 class="person-name">覃时</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 李媛媛 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">李</div>
+                        </div>
+                        <h5 class="person-name">李媛媛</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 刘雨薇 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">刘</div>
+                        </div>
+                        <h5 class="person-name">刘雨薇</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 邝敏瑶 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">邝</div>
+                        </div>
+                        <h5 class="person-name">邝敏瑶</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                    
+                    <!-- 蔡佳婷 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">蔡</div>
+                        </div>
+                        <h5 class="person-name">蔡佳婷</h5>
+                        <p class="person-title">硕士研究生</p>
+                        <p class="person-period">2022-2025</p>
+                        <p class="person-more"><a href="#">More info</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 往届组员 -->
+        <div id="alumni" class="tab-content">
+            <div class="people-container alumni-section">
+                <h3 style="text-align: center; color: #666; margin-bottom: 20px;">2021-2024届</h3>
+                <div class="people-row">
+                    <!-- 叶俊威 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">叶</div>
+                        </div>
+                        <h5 class="person-name">叶俊威</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                    
+                    <!-- 潘冬萍 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">潘</div>
+                        </div>
+                        <h5 class="person-name">潘冬萍</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                    
+                    <!-- 万玉燕 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">万</div>
+                        </div>
+                        <h5 class="person-name">万玉燕</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                    
+                    <!-- 黄芳婷 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">黄</div>
+                        </div>
+                        <h5 class="person-name">黄芳婷</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                    
+                    <!-- 段志强 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">段</div>
+                        </div>
+                        <h5 class="person-name">段志强</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                    
+                    <!-- 宋庆伟 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">宋</div>
+                        </div>
+                        <h5 class="person-name">宋庆伟</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                    
+                    <!-- 彭志欢 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">彭</div>
+                        </div>
+                        <h5 class="person-name">彭志欢</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                    
+                    <!-- 陈梓楷 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">陈</div>
+                        </div>
+                        <h5 class="person-name">陈梓楷</h5>
+                        <p class="person-period">2021-2024</p>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; color: #666; margin: 30px 0 20px 0;">2020-2023届</h3>
+                <div class="people-row">
+                    <!-- 钟秀华 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">钟</div>
+                        </div>
+                        <h5 class="person-name">钟秀华</h5>
+                        <p class="person-period">2020-2023</p>
+                    </div>
+                    
+                    <!-- 王婷 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">王</div>
+                        </div>
+                        <h5 class="person-name">王婷</h5>
+                        <p class="person-period">2020-2023</p>
+                    </div>
+                    
+                    <!-- 陈锴丰 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">陈</div>
+                        </div>
+                        <h5 class="person-name">陈锴丰</h5>
+                        <p class="person-period">2020-2023</p>
+                    </div>
+                    
+                    <!-- 王铱 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">王</div>
+                        </div>
+                        <h5 class="person-name">王铱</h5>
+                        <p class="person-period">2020-2023</p>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; color: #666; margin: 30px 0 20px 0;">2018-2022届</h3>
+                <div class="people-row">
+                    <!-- 吴烈鑫 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">吴</div>
+                        </div>
+                        <h5 class="person-name">吴烈鑫</h5>
+                        <p class="person-period">2018-2022</p>
+                    </div>
+                    
+                    <!-- 林爽 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">林</div>
+                        </div>
+                        <h5 class="person-name">林爽</h5>
+                        <p class="person-period">2019-2022</p>
+                    </div>
+                    
+                    <!-- 张海漫 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">张</div>
+                        </div>
+                        <h5 class="person-name">张海漫</h5>
+                        <p class="person-period">2019-2022</p>
+                    </div>
+                    
+                    <!-- 韦银慧 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">韦</div>
+                        </div>
+                        <h5 class="person-name">韦银慧</h5>
+                        <p class="person-period">2019-2022</p>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; color: #666; margin: 30px 0 20px 0;">2018-2021届</h3>
+                <div class="people-row">
+                    <!-- 张凯欣 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">张</div>
+                        </div>
+                        <h5 class="person-name">张凯欣</h5>
+                        <p class="person-period">2018-2021</p>
+                    </div>
+                    
+                    <!-- 卞孟瑶 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">卞</div>
+                        </div>
+                        <h5 class="person-name">卞孟瑶</h5>
+                        <p class="person-period">2018-2021</p>
+                    </div>
+                    
+                    <!-- 李丽萍 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">李</div>
+                        </div>
+                        <h5 class="person-name">李丽萍</h5>
+                        <p class="person-period">2018-2021</p>
+                    </div>
+                    
+                    <!-- 孙铭 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">孙</div>
+                        </div>
+                        <h5 class="person-name">孙铭</h5>
+                        <p class="person-period">2018-2021</p>
+                    </div>
+                    
+                    <!-- 杨健 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">杨</div>
+                        </div>
+                        <h5 class="person-name">杨健</h5>
+                        <p class="person-period">2018-2021</p>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; color: #666; margin: 30px 0 20px 0;">2017-2020届</h3>
+                <div class="people-row">
+                    <!-- 石文娣 -->
+                    <div class="person-item">
+                        <div class="person-image-container">
+                            <div class="placeholder-avatar">石</div>
+                        </div>
+                        <h5 class="person-name">石文娣</h5>
+                        <p class="person-period">2017-2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 Yi_wei课题组 | 组员介绍</p>
+    </footer>
+    
+    <script>
+        function showTab(tabId) {
+            // 隐藏所有内容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 移除所有按钮的active状态
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 显示选中的内容
+            document.getElementById(tabId).classList.add('active');
+            
+            // 激活对应的按钮
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

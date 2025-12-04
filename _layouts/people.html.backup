@@ -1,0 +1,87 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<div class="people-container">
+  <div class="people-row">
+    {% for person in site.data.settings.people %}
+    <div class="person-item" data-index="{{ forloop.index0 }}">
+      <div class="text-center">
+        <!-- 图片容器 - 保持所有图片区域大小一致 -->
+        <div class="person-image-container">
+          <!-- 确保图片按比例缩放并填充容器 -->
+          <img src="{{ site.github.url }}/{{ person.image }}" alt="{{ person.name }}" 
+               class="person-image">
+        </div>
+        <h5 class="person-name">{{ person.name }}</h5>
+        <p class="person-title">{{ person.title}}</p>
+        <p class="person-more"><a href="{{ site.github.url }}/people/{{ person.url }}">More info</a></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.people-row {
+  display: flex;
+  flex-wrap: wrap;
+  --image-width: 200px; /* 先统一图片宽度 */
+  --gap-size: calc(var(--image-width) / 4); /* 间距 = 图片宽度的1/2 */
+  --person-width: var(--image-width); /* 人员项宽度 = 图片宽度 */
+  gap: var(--gap-size); /* 使用计算出的间距 */
+  justify-content: center; /* 居中对齐，增强整齐感 */
+  padding: 0 calc(var(--gap-size) / 2);
+  margin: 0 auto; /* 容器居中 */
+  max-width: calc(100% - var(--gap-size)); /* 限制最大宽度 */
+}
+
+.person-item {
+  flex: 0 0 var(--person-width); /* 使用统一宽度 */
+  box-sizing: border-box;
+  padding: 15px;
+  text-align: center; /* 文字居中 */
+}
+
+.person-image-container {
+  width: var(--image-width); /* 使用统一宽度 */
+  height: var(--image-width); /* 正方形容器 */
+  margin: 0 auto 10px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 统一图片样式 */
+.person-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* 保持图片比例，完整显示 */
+}
+
+/* 响应式调整 - 保持相同的比例关系 */
+@media (max-width: 1200px) {
+  .people-row {
+    --image-width: 180px; /* 适当缩小图片 */
+  }
+}
+
+@media (max-width: 768px) {
+  .people-row {
+    --image-width: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  .people-row {
+    --image-width: 280px; /* 移动端适当放大 */
+    --gap-size: 20px; /* 移动端间距固定值更合适 */
+  }
+}
+</style>

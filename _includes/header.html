@@ -1,6 +1,17 @@
+<!-- 
+  导航栏组件 - 与主页导航栏1:1同步（结构+类名+链接）
+  保存为 _includes/header.html，直接在其他页面引入即可保持一致
+-->
+
 <style>
-  /* 固定导航栏样式 */
-  .site-header {
+  /* 导航栏样式 - 完全匹配主页CSS，确保视觉统一 */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,6 +21,12 @@
     border-bottom: 1px solid rgba(139, 156, 182, 0.1);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .header.scrolled {
+    padding: 12px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   }
 
   .header-content {
@@ -19,9 +36,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: padding 0.3s ease;
   }
 
-  .site-logo {
+  .header.scrolled .header-content {
+    padding: 12px 40px;
+  }
+
+  .logo {
     font-size: 1.4em;
     font-weight: 700;
     color: #2c3540;
@@ -36,78 +58,147 @@
     color: #7f8994;
   }
 
-  .site-nav {
+  .nav {
     display: flex;
     gap: 35px;
-    align-items: center;
   }
 
-  .site-nav a {
+  .nav a {
     color: #5a6471;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
     position: relative;
+    padding: 8px 0;
   }
 
-  .site-nav a:hover {
+  .nav a:hover {
     color: #8b9cb6;
   }
 
-  .site-nav a.active {
+  /* 导航链接激活状态（当前页面高亮）- 保留复用性 */
+  .nav a.active {
     color: #8b9cb6;
   }
 
-  /* 为固定导航栏留出空间 */
-  body {
-    padding-top: 80px;
+  .nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #8b9cb6;
+    transition: width 0.3s;
   }
 
-  /* 响应式 */
+  .nav a:hover::after,
+  .nav a.active::after {
+    width: 100%;
+  }
+
+  /* 移动端菜单按钮 */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #2c3540;
+    cursor: pointer;
+  }
+
+  /* 移动端响应式样式 - 完全匹配主页 */
   @media (max-width: 768px) {
     .header-content {
-      flex-direction: column;
-      gap: 15px;
+      flex-direction: row;
+      justify-content: space-between;
       padding: 15px 20px;
     }
 
-    .site-nav {
-      gap: 15px;
-      font-size: 0.9em;
+    .nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 10px 10px rgba(0,0,0,0.05);
     }
 
-    body {
-      padding-top: 120px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .site-nav {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      text-align: center;
-      width: 100%;
+    .nav.active {
+      display: flex;
     }
 
-    .site-nav a {
-      font-size: 0.85em;
+    .nav a {
+      padding: 15px 20px;
+      border-bottom: 1px solid #f0f3f7;
+    }
+
+    .nav a::after {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
     }
   }
 </style>
 
-<header class="site-header">
+<!-- 导航栏HTML - 与主页完全一致，仅增加active状态判断（复用性关键） -->
+<header class="header">
   <div class="header-content">
-    <a href="/" class="site-logo">
+    <a href="/" class="logo">
       Center for Drug Discovery
-      <span class="logo-subtitle">School of Pharmaceutical Sciences, Guangzhou Medical University</span>
+      <span class="logo-subtitle">Guangzhou Medical University, School of Pharmaceutical Sciences</span>
     </a>
-    <nav class="site-nav">
-      <a href="/research/">Research</a>
-      <a href="/publications/">Publications</a>
-      <a href="/people/">Members</a>
-      <a href="/chemlib/">ChemLib</a>
-      <a href="/contact/">Contact</a>
+    <button class="menu-toggle">☰</button>
+    <nav class="nav">
+      <!-- 保留active状态判断，确保当前页面链接高亮（组件复用核心） -->
+      <a href="/research/" {% if page.url contains "research" %}class="active"{% endif %}>Assay</a>
+      <a href="/chemlib/" {% if page.url contains "chemlib" %}class="active"{% endif %}>ChemLib</a>
+      <a href="/people/" {% if page.url contains "people" %}class="active"{% endif %}>Team</a>
+      <a href="/publications/" {% if page.url contains "publications" %}class="active"{% endif %}>Publications</a>
+      <a href="/contact/" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a>
     </nav>
   </div>
 </header>
+
+<!-- JavaScript - 与主页交互逻辑完全同步 -->
+<script>
+  // 导航栏滚动效果（滚动时收缩+加深阴影）
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // 移动端菜单切换（显示/隐藏导航链接）
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  
+  menuToggle.addEventListener('click', function() {
+    nav.classList.toggle('active');
+  });
+
+  // 点击导航链接后关闭移动端菜单（提升用户体验）
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        nav.classList.remove('active');
+      }
+    });
+  });
+
+  // 窗口 resize 时自动关闭移动端菜单（避免适配异常）
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      nav.classList.remove('active');
+    }
+  });
+</script>

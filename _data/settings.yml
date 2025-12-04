@@ -1,11 +1,11 @@
 menu:
 - {name: 'Assay', url: '/research'}
-- {name: 'Publications', url: '/publications'}
-- {name: 'Members', url: '/people'}
 - {name: 'ChemLib', url: '/chemlib'}
+- {name: 'Team', url: '/people'}
+- {name: 'Publications', url: '/publications'}
 - {name: 'Contact', url: '/contact'}
 
-research:
+Assay:
 - {name: 'Organic Synthesis',url: 'Organic Synthesis'}
 - {name: 'Flavivirus Inhibitors',url: 'Flavivirus Inhibitors'}
 - {name: 'AI for Drug Discovery',url: 'ai'}
@@ -15,7 +15,7 @@ publications:
 - {name: 'Organic Chemistry', url: 'quantum-mechanics'}
 - {name: 'Pharmacal Chemistry', url: 'stellar-structures'}
 
-people:
+Team:
 - {name: 'Dr. Cheng Zhang', title: 'Principal Investigator', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'chengzhang@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/PI3.jpg', url: 'dr-cheng-zhang'}
 - {name: 'Dr. Guangsheng Lu', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Lu.jpg', url: 'dr-guangsheng-lu'}
 - {name: 'Dr. Liye Qu', title: 'Postdoctoral Scholar', department: 'Pharmacy', institution: 'Guangzhou Medical University', institution_address: 'No.1 Xinzao Road, Panyu Campus', email: 'hello@gzhmu.edu.cn', office: 'Technology Building 828', image: 'assets/img/Qu.jpg', url: 'dr-liye-qu'}
