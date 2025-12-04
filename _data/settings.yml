@@ -13,7 +13,6 @@ Assay:
 ChemLib:
 - {name: 'Chemical Library', url: 'chemLib'}
 
-
 Team:
 - {name: 'Yi Wei', title: 'Professor, Doctoral Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/yiwei.png', url: 'yi-wei'}
 - {name: 'Zhou Zhi', title: 'Associate Professor, Master\'s Supervisor', department: '', institution: '', email: '', office: '', image: '/assets/img/people/zhouzhi.jpg', url: 'zhou-zhi'}
