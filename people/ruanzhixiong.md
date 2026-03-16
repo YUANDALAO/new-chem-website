@@ -1,9 +1,9 @@
 ---
 layout: person
-person_name: 洪旭佳
-title: 教授，硕导
-image: /assets/img/people/hongxujia.png
-email: hongxujia@gzhmu.edu.cn
+person_name: 阮志雄
+title: 教授，博导
+image: /assets/img/people/ruanzhixiong.jpg
+email: zruan@gzhmu.edu.cn
 ---
 
 ## 个人简介
