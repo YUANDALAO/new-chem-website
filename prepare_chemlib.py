@@ -1,68 +1,129 @@
 import pandas as pd
 import yaml
+import json
 import os
+from collections import Counter
 
-# --- 配置 ---
-# 你的Excel文件所在的文件夹路径
-# 我们使用_chemlib_data来避免与网页路径冲突
-SOURCE_FOLDER = '_chemlib_data'
-# 输出的Jekyll数据文件路径
-OUTPUT_FILE = '_data/molecules.yml'
+# --- Config ---
+SOURCE_FOLDER   = '_chemlib_data'
+OUTPUT_YAML     = '_data/molecules.yml'       # small scaffold data for Jekyll
+OUTPUT_JSON_DIR = 'assets/data'               # per-category JSON for JS rendering
+
+# Category is detected from the Excel filename.
+CATEGORY_KEYWORDS = [
+    ('natural',   'natural'),
+    ('active',    'active'),
+    ('druglike',  'druglike'),
+    ('drug_like', 'druglike'),
+    ('drug-like', 'druglike'),
+    ('scaffold',  'scaffold'),
+]
+
+# Libraries with <= this many compounds are also kept in molecules.yml
+# (used by Jekyll/Liquid for small collections like scaffold).
+YAML_SIZE_LIMIT = 3000
+
+def detect_category(filename):
+    name_lower = filename.lower()
+    for keyword, category in CATEGORY_KEYWORDS:
+        if keyword in name_lower:
+            return category
+    return 'unknown'
 
 def process_files():
-    """
-    读取SOURCE_FOLDER中所有的.xlsx文件, 提取ID和SMILES,
-    并将其写入到Jekyll的_data文件夹下的YAML文件中。
-    """
     all_molecules = []
-    
-    print(f"开始扫描文件夹: {SOURCE_FOLDER}")
 
-    # 检查源文件夹是否存在
+    print(f"Scanning: {SOURCE_FOLDER}\n")
+
     if not os.path.isdir(SOURCE_FOLDER):
-        print(f"[错误] 源文件夹 '{SOURCE_FOLDER}' 不存在。请确保你已经创建了该文件夹并放入了Excel文件。")
+        print(f"[Error] Folder '{SOURCE_FOLDER}' not found.")
         return
 
-    # 遍历文件夹中的所有文件
-    for filename in os.listdir(SOURCE_FOLDER):
-        if filename.endswith('.xlsx') and not filename.startswith('~'):
-            file_path = os.path.join(SOURCE_FOLDER, filename)
-            print(f"  正在处理文件: {file_path}")
-            
+    for filename in sorted(os.listdir(SOURCE_FOLDER)):
+        if not filename.endswith('.xlsx') or filename.startswith('~'):
+            continue
+
+        file_path = os.path.join(SOURCE_FOLDER, filename)
+        category  = detect_category(filename)
+        print(f"  {filename}  →  category = '{category}'")
+
+        try:
             try:
-                # 读取Excel文件
+                df = pd.read_excel(file_path, sheet_name='Compound List')
+            except Exception:
                 df = pd.read_excel(file_path)
-                
-                # 确保文件中包含'ID'和'SMILES'列
-                if 'ID' in df.columns and 'SMILES' in df.columns:
-                    # 遍历每一行
-                    for index, row in df.iterrows():
-                        # 确保ID和SMILES不为空
-                        if pd.notna(row['ID']) and pd.notna(row['SMILES']):
-                            molecule_data = {
-                                'ID': str(row['ID']),        # 使用大写 'ID'
-                                'SMILES': str(row['SMILES'])   # 使用大写 'SMILES'
-                            }
-                            all_molecules.append(molecule_data)
-                else:
-                    print(f"    [警告] 文件 {filename} 缺少 'ID' 或 'SMILES' 列, 已跳过。")
-            
-            except Exception as e:
-                print(f"    [错误] 处理文件 {filename} 时出错: {e}")
 
-    # 如果没有找到任何分子数据，则提示并退出
+            # Normalise ID column
+            if 'ID' not in df.columns and 'IDNUMBER' in df.columns:
+                df = df.rename(columns={'IDNUMBER': 'ID'})
+
+            if 'ID' not in df.columns or 'SMILES' not in df.columns:
+                print(f"    [Warning] Missing 'ID' or 'SMILES' — skipped.")
+                print(f"    Columns found: {df.columns.tolist()}")
+                continue
+
+            count = 0
+            for _, row in df.iterrows():
+                if pd.isna(row['ID']) or pd.isna(row['SMILES']):
+                    continue
+
+                # Use Category column from Excel if available
+                if 'Category' in df.columns and pd.notna(row['Category']):
+                    cat = str(row['Category']).strip().lower()
+                else:
+                    cat = category
+
+                mol = {
+                    'ID':       str(row['ID']).strip(),
+                    'SMILES':   str(row['SMILES']).strip(),
+                    'Category': cat,
+                }
+                if 'MW' in df.columns and pd.notna(row['MW']):
+                    mol['MW'] = round(float(row['MW']), 2)
+                if 'scale' in df.columns and pd.notna(row['scale']):
+                    mol['scale'] = round(float(row['scale']), 3)
+
+                all_molecules.append(mol)
+                count += 1
+
+            print(f"    {count} compounds loaded")
+
+        except Exception as e:
+            print(f"    [Error] {e}")
+
     if not all_molecules:
-        print("\n[警告] 没有从任何Excel文件中提取到分子数据。请检查文件内容和列名。")
+        print("\n[Warning] No molecule data found.")
         return
 
-    # 确保_data文件夹存在
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    # ── Group by category ──────────────────────────────────
+    by_category = {}
+    for mol in all_molecules:
+        by_category.setdefault(mol['Category'], []).append(mol)
 
-    # 将所有分子数据写入YAML文件
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        yaml.dump(all_molecules, f, default_flow_style=False, allow_unicode=True)
-        
-    print(f"\n处理完成! 总共 {len(all_molecules)} 个分子数据已成功写入到 {OUTPUT_FILE}")
+    cats = Counter(m['Category'] for m in all_molecules)
+    print(f"\nTotal: {len(all_molecules)} compounds")
+    print("  Category breakdown:")
+    for cat, count in sorted(cats.items()):
+        print(f"    {cat:12s}: {count}")
+
+    # ── Write per-category JSON (for client-side rendering) ─
+    os.makedirs(OUTPUT_JSON_DIR, exist_ok=True)
+    for cat, mols in by_category.items():
+        json_path = os.path.join(OUTPUT_JSON_DIR, f"compounds_{cat}.json")
+        with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump(mols, f, ensure_ascii=False, separators=(',', ':'))
+        print(f"  → {json_path}  ({len(mols)} compounds)")
+
+    # ── Write molecules.yml for Jekyll (small libs only) ────
+    yaml_mols = [m for m in all_molecules if cats[m['Category']] <= YAML_SIZE_LIMIT]
+    os.makedirs(os.path.dirname(OUTPUT_YAML), exist_ok=True)
+    with open(OUTPUT_YAML, 'w', encoding='utf-8') as f:
+        yaml.dump(yaml_mols, f,
+                  default_flow_style=False,
+                  allow_unicode=True,
+                  sort_keys=False)
+    print(f"\n  molecules.yml: {len(yaml_mols)} compounds (libraries ≤ {YAML_SIZE_LIMIT})")
+    print("  Larger libraries use JSON + client-side rendering.\n")
 
 if __name__ == '__main__':
     process_files()
