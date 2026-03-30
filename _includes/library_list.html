@@ -1,0 +1,36 @@
+{% assign category = include.category %}
+{% assign molecules = site.data.molecules | where: "Category", category %}
+
+<div class="molecule-grid">
+  {% for mol in molecules %}
+  <div class="mol-card">
+    <img src="/assets/images/compounds/{{ mol.ID }}.png" alt="{{ mol.ID }}">
+    <div class="mol-id">{{ mol.ID }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<style>
+.molecule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 2rem;
+}
+.mol-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.mol-card img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+.mol-id {
+  font-weight: 600;
+  color: #333;
+}
+</style>
