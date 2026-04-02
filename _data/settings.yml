@@ -14,25 +14,14 @@ ChemLib:
   - {name: 'Chemical Library', url: '/chemlib/library'}
 
 people:
-  # 教授及副教授
-  - {name: 'Wei Yi', title: "Professor, Doctoral Supervisor", email: 'yiwei@gzhmu.edu.cn', image: '/assets/img/people/yiwei.png', url: 'yi-wei'}
-  - {name: 'Zhixiong Ruan', title: "Professor, Doctoral Supervisor", email: 'zruan@gzhmu.edu.cn', image: '/assets/img/people/ruanzhixiong.jpg', url: 'ruan-zhixiong'}
-  - {name: 'Cheng Zhang', title: "Professor, Master''s Supervisor", email: 'zhangcheng@gzhmu.edu.cn', image: '/assets/img/people/zhangcheng.jpg', url: 'zhang-cheng'}
- 
-  #- {name: 'Zhi Zhou', title: "Associate Professor, Master''s Supervisor", email: 'zhouzhi@gzhmu.edu.cn', image: '/assets/img/people/zhouzhi.jpg', url: 'zhou-zhi'}
-  #- {name: 'Shengdong Wang', title: "Professor, Master''s Supervisor", email: 'wangshengdong@gzhmu.edu.cn', image: '/assets/img/people/wangshengdong.jpg', url: 'wang-shengdong'}
-  #- {name: 'Zhongyi Zeng', title: "Professor, Master''s Supervisor", email: 'zengzhongyi@gzhmu.edu.cn', image: '/assets/img/people/zengzhongyi.png', url: 'zeng-zhongyi'}
-  #- {name: 'Xujia Hong', title: "Professor, Master''s Supervisor", email: 'hongxujia@gzhmu.edu.cn', image: '/assets/img/people/hongxujia.png', url: 'hong-xujia'}
-  #- {name: 'Siming Huang', title: "Professor, Master''s Supervisor", email: 'huangsiming@gzhmu.edu.cn', image: '/assets/img/people/huangsiming.png', url: 'huang-siming'}
-  #- {name: 'Cheng Zhang', title: "Professor, Master''s Supervisor", email: 'zhangcheng@gzhmu.edu.cn', image: '/assets/img/people/zhangcheng.jpg', url: 'zhang-cheng'}
-  #- {name: 'Youwei Xu', title: "Associate Researcher, Master''s Supervisor", email: 'xuyouwei@gzhmu.edu.cn', image: '/assets/img/people/xuyouwei.png', url: 'xu-youwei'}
-  #- {name: 'Xiawen Liu', title: "Associate Professor, Master''s Supervisor", email: 'liuxiawen@gzhmu.edu.cn', image: '/assets/img/people/liuxiawen.jpg', url: 'liu-xiawen'}
-  #- {name: 'Junjun Huang', title: "Professor, Master''s Supervisor", email: 'huangjunjun@gzhmu.edu.cn', image: '/assets/img/people/huangjunjun.jpg', url: 'huang-junjun'}
-  #- {name: 'Wenhao Wu', title: "Associate Professor, Master''s Supervisor", email: 'wuwenhao@gzhmu.edu.cn', image: '/assets/img/people/wuwenhao.jpg', url: 'wu-wenhao'}
-  #- {name: 'Xin Zhao', title: "Associate Professor, Master''s Supervisor", email: 'zhaoxin@gzhmu.edu.cn', image: '/assets/img/people/zhaoxin.jpg', url: 'zhao-xin'}
-  #- {name: 'Siyan Liao', title: "Associate Professor, Master''s Supervisor", email: 'liaosiyan@gzhmu.edu.cn', image: '/assets/img/people/liaosiyan.png', url: 'liao-siyan'}
-  #- {name: 'Yugang Huang', title: "Professor, Master''s Supervisor", email: 'huangyugang@gzhmu.edu.cn', image: '/assets/img/people/huangyugang.jpg', url: 'huang-yugang'}
-
+  - {name: 'Wei Yi',       title: "Professor", email: 'yiwei@gzhmu.edu.cn',     image: '/assets/img/People/yiwei.png',         url: 'yi-wei'}
+  - {name: 'Junfeng Zhao', title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Junfeng Zhao.jpeg', url: 'junfeng-zhao'}
+  - {name: 'Zhixiong Ruan',title: "Professor", email: 'zruan@gzhmu.edu.cn',      image: '/assets/img/People/ruanzhixiong.jpg',  url: 'ruan-zhixiong'}
+  - {name: 'Shiying Li',   title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Shiying Li.jpeg',   url: 'shiying-li'}
+  - {name: 'Youwei Xu',    title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Youwei Xu.jpeg',    url: 'youwei-xu'}
+  - {name: 'Shuimu Lin',   title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/shuimu-lin.jpg',    url: 'shuimu-lin'}
+  - {name: 'Zhi Zhou',     title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Zhi Zhou.jpeg',     url: 'zhi-zhou'}
+  - {name: 'Cheng Zhang',  title: "Professor", email: 'zhangcheng@gzhmu.edu.cn', image: '/assets/img/People/zhangcheng.jpg',    url: 'zhang-cheng'}
 
 publications:
   - {name: 'Microbiology', url: '/publications/microbiology'}
