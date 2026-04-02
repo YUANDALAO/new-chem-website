@@ -15,12 +15,12 @@ ChemLib:
 
 people:
   - {name: 'Wei Yi',       title: "Professor", email: 'yiwei@gzhmu.edu.cn',     image: '/assets/img/People/yiwei.png',         url: 'yi-wei'}
-  - {name: 'Junfeng Zhao', title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Junfeng Zhao.jpeg', url: 'junfeng-zhao'}
+  - {name: 'Junfeng Zhao', title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/zhaojunfeng.jpeg', url: 'junfeng-zhao'}
   - {name: 'Zhixiong Ruan',title: "Professor", email: 'zruan@gzhmu.edu.cn',      image: '/assets/img/People/ruanzhixiong.jpg',  url: 'ruan-zhixiong'}
-  - {name: 'Shiying Li',   title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Shiying Li.jpeg',   url: 'shiying-li'}
-  - {name: 'Youwei Xu',    title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Youwei Xu.jpeg',    url: 'youwei-xu'}
+  - {name: 'Shiying Li',   title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/lishiying.jpeg',   url: 'shiying-li'}
+  - {name: 'Youwei Xu',    title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/xuyouwei.png',    url: 'youwei-xu'}
   - {name: 'Shuimu Lin',   title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/shuimu-lin.jpg',    url: 'shuimu-lin'}
-  - {name: 'Zhi Zhou',     title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/Zhi Zhou.jpeg',     url: 'zhi-zhou'}
+  - {name: 'Zhi Zhou',     title: "Professor", email: 'hello@gzhmu.edu.cn',      image: '/assets/img/People/zhouzhi.jpg',     url: 'zhi-zhou'}
   - {name: 'Cheng Zhang',  title: "Professor", email: 'zhangcheng@gzhmu.edu.cn', image: '/assets/img/People/zhangcheng.jpg',    url: 'zhang-cheng'}
 
 publications:
