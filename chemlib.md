@@ -8,7 +8,7 @@ nav_order: 4
 <div class="chemlib-hero">
   <div class="chemlib-hero-content">
     <div class="chemlib-badge">Compound Libraries</div>
-    <h1 class="chemlib-title">ZhangLab ChemLib</h1>
+    <h1 class="chemlib-title">Lab ChemLib</h1>
     <p class="chemlib-subtitle">Curated collections of bioactive small molecules for drug discovery and chemical biology research</p>
     <div class="chemlib-stats">
       <div class="stat-item">
